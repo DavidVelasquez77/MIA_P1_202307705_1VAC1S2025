@@ -1,7 +1,5 @@
 package commands
 
-
-
 import (
 	// Paquete para manejar errores y crear nuevos errores con mensajes personalizados
 	"errors"
@@ -66,6 +64,10 @@ func ParseMkdisk(tokens []string) (string, error) {
 			if value == "" {
 				return "", errors.New("el path no puede estar vacio")
 			}
+			// Asegurar que el archivo tenga extensión .dsk
+			if !strings.HasSuffix(strings.ToLower(value), ".dsk") {
+				value = strings.TrimSuffix(value, filepath.Ext(value)) + ".dsk"
+			}
 			cmd.path = value
 		default:
 			return "", fmt.Errorf("parametro desconocido: %s", key)
@@ -85,13 +87,24 @@ func ParseMkdisk(tokens []string) (string, error) {
 	if cmd.fit == "" {
 		cmd.fit = "FF"
 	}
-	err := commandMkdisk(cmd)
+
+	// Generar nombre de disco automáticamente con letra
+	diskLetter, err := utils.GetNextAvailableDiskLetter()
 	if err != nil {
 		return "", err
 	}
-	name := utils.GetNameByPath(cmd.path)
-	stores.LoadedDiskPaths[name] = cmd.path
-	return fmt.Sprintf("MKDISK: %s creado exitosamente", cmd.path), nil
+
+	// Actualizar la ruta para usar la letra del disco
+	dir := filepath.Dir(cmd.path)
+	cmd.path = filepath.Join(dir, diskLetter+".dsk")
+
+	err = commandMkdisk(cmd)
+	if err != nil {
+		utils.ReleaseDiskLetter(diskLetter)
+		return "", err
+	}
+	stores.LoadedDiskPaths[diskLetter] = cmd.path
+	return fmt.Sprintf("MKDISK: Disco %s creado exitosamente en %s", diskLetter, cmd.path), nil
 
 }
 

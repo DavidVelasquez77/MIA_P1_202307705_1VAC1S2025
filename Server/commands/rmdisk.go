@@ -6,6 +6,7 @@ import (
 	"os"
 	"regexp"
 	"server/stores"
+	"server/utils"
 	"strings"
 )
 
@@ -45,12 +46,21 @@ func ParseRmdisk(tokens []string) (string, error) {
 		return "", errors.New("faltan parametros requeridos: -path")
 	}
 
+	// Obtener la letra del disco antes de eliminarlo
+	diskLetter := utils.GetDiskLetterFromPath(cmd.path)
+
 	err := commandRmdisk(cmd)
 	if err != nil {
 		return "", err
 	}
+
+	// Liberar la letra del disco
+	if diskLetter != "" {
+		utils.ReleaseDiskLetter(diskLetter)
+	}
+
 	stores.DeleteMountedPartitions(cmd.path)
-	return fmt.Sprintf("RMDISK: %s eliminado exitosamente", cmd.path), nil
+	return fmt.Sprintf("RMDISK: Disco %s eliminado exitosamente", diskLetter), nil
 
 }
 

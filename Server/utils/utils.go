@@ -113,3 +113,30 @@ func GetNameByPath(path string) string {
 	parts := strings.Split(path, "/")
 	return parts[len(parts)-1]
 }
+
+var DiskLetters = []string{"A", "B", "C", "D"}
+var UsedDiskLetters = make(map[string]bool)
+
+func GetNextAvailableDiskLetter() (string, error) {
+	for _, letter := range DiskLetters {
+		if !UsedDiskLetters[letter] {
+			UsedDiskLetters[letter] = true
+			return letter, nil
+		}
+	}
+	return "", errors.New("no hay letras de disco disponibles")
+}
+
+func ReleaseDiskLetter(letter string) {
+	delete(UsedDiskLetters, letter)
+}
+
+func GetDiskLetterFromPath(path string) string {
+	baseName := strings.TrimSuffix(filepath.Base(path), filepath.Ext(path))
+	for _, letter := range DiskLetters {
+		if baseName == letter {
+			return letter
+		}
+	}
+	return ""
+}

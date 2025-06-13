@@ -81,6 +81,11 @@ func GetMountedPartitionRep(id string) (*structures.MBR, *structures.SuperBlock,
 
 func GetNameDisk(idDisk string) string {
 	pathDisk := MountedPartitions[idDisk]
+	diskLetter := utils.GetDiskLetterFromPath(pathDisk)
+	if diskLetter != "" {
+		return diskLetter
+	}
+	// Fallback al método anterior si no se encuentra letra
 	baseName := strings.TrimSuffix(filepath.Base(pathDisk), filepath.Ext(pathDisk))
 	return baseName
 }
