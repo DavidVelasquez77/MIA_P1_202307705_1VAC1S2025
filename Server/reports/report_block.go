@@ -72,7 +72,7 @@ func getStringBlock(inode *structures.Inode, diskPath string, sb *structures.Sup
 		}
 		fValue := getNumber()
 		// Aqui diferenciar si es de tipo 0 o 1 el Inodo
-		if i >= 12 {
+		if i >= 15 {
 			pointerBlock := structures.PointerBlock{}
 			err := pointerBlock.Deserialize(diskPath, int64(sb.S_block_start+(blockIndex*sb.S_block_size)))
 			if err != nil {

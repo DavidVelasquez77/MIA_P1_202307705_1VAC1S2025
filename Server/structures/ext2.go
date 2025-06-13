@@ -25,8 +25,8 @@ func (sb *SuperBlock) createFolderInInode(path string, inodeIndex int32, parents
 			if !justSearchingAFile && len(parentsDir) != 0 {
 				return errors.New("ruta invalida, asegurese que exita la ruta antes")
 			}
-			// Aqui se debe validar si es la iteracion 13 en adelante para hacer lo de los apuntadores indirectos
-			if i >= 12 {
+			// Aqui se debe validar si es la iteracion 15 en adelante para hacer lo de los apuntadores indirectos
+			if i >= 15 {
 				inode.I_block[i] = sb.S_blocks_count
 
 				pointerBlock := &PointerBlock{
@@ -102,7 +102,7 @@ func (sb *SuperBlock) createFolderInInode(path string, inodeIndex int32, parents
 			}
 		}
 
-		if i >= 12 {
+		if i >= 15 {
 			flag, err := sb.folderFromAuntadorIndirecto13(path, inodeIndex, parentsDir, destDir, justSearchingAFile, blockIndex, inodoPadre)
 			if err != nil {
 				return err
@@ -253,7 +253,7 @@ func existTheDirectory(inodo *Inode, nameDir string, path string, sb *SuperBlock
 		if blockIndex == -1 {
 			return false, 0, nil
 		}
-		if i >= 12 {
+		if i >= 15 {
 			pointerBlock := &PointerBlock{}
 			err := pointerBlock.Deserialize(path, int64(sb.S_block_start+(sb.S_block_size*blockIndex)))
 			if err != nil {
@@ -313,8 +313,8 @@ func (sb *SuperBlock) CreateFile(diskPath string, inodeIndex int32, parentsDir [
 			if !justSearchingAFile && len(parentsDir) != 0 {
 				return errors.New("ruta invalida, asegurese que exita la ruta antes")
 			}
-			// Aqui se debe validar si es la iteracion 13 en adelante para hacer lo de los apuntadores indirectos
-			if i >= 12 {
+			// Aqui se debe validar si es la iteracion 15 en adelante para hacer lo de los apuntadores indirectos
+			if i >= 15 {
 				inode.I_block[i] = sb.S_blocks_count
 
 				pointerBlock := &PointerBlock{
@@ -390,7 +390,7 @@ func (sb *SuperBlock) CreateFile(diskPath string, inodeIndex int32, parentsDir [
 			}
 		}
 
-		if i >= 12 {
+		if i >= 15 {
 			pointerBlock := &PointerBlock{}
 			err := pointerBlock.Deserialize(diskPath, int64(sb.S_block_start+(blockIndex*sb.S_block_size)))
 			if err != nil {
@@ -473,12 +473,12 @@ func (sb *SuperBlock) CreateFile(diskPath string, inodeIndex int32, parentsDir [
 						sb.S_first_ino += sb.S_inode_size
 						// Flag de repetir el llenado
 						flagToCreateNeoBlockPointer := true
-						tempCont := 12
+						tempCont := 15
 						// Index del bloque pointer
 						var indexBlockPointer int32
 						tempBlockPointer := &PointerBlock{}
 						for i, content := range contentChunks {
-							if i >= 12 { //Aputnadores indirectos
+							if i >= 15 { //Aputnadores indirectos
 								if flagToCreateNeoBlockPointer {
 									for id, value := range folderInode.I_block {
 										if value == -1 {
@@ -616,12 +616,12 @@ func (sb *SuperBlock) CreateFile(diskPath string, inodeIndex int32, parentsDir [
 				sb.S_first_ino += sb.S_inode_size
 				// Flag de repetir el llenado
 				flagToCreateNeoBlockPointer := true
-				tempCont := 12
+				tempCont := 15
 				// Index del bloque pointer
 				var indexBlockPointer int32
 				tempBlockPointer := &PointerBlock{}
 				for i, content := range contentChunks {
-					if i >= 12 { //Aputnadores indirectos
+					if i >= 15 { //Aputnadores indirectos
 						if flagToCreateNeoBlockPointer {
 							for id, value := range folderInode.I_block {
 								if value == -1 {
@@ -769,7 +769,7 @@ func (sb *SuperBlock) ContentFromFile(diskPath string, inodeIndex int32, parents
 						if value == -1 {
 							break
 						}
-						if iTe >= 12 {
+						if iTe >= 15 {
 							pointerBlock := &PointerBlock{}
 							err := pointerBlock.Deserialize(diskPath, int64(sb.S_block_start+(sb.S_block_size*value)))
 							if err != nil {
@@ -813,7 +813,7 @@ func (sb *SuperBlock) folderFromAuntadorIndirecto13(diskPath string, inodeIndex 
 
 	for i, blockIndex := range pointerBlock.P_pointers {
 		if blockIndex == -1 {
-			// Aqui se debe validar si es la iteracion 13 en adelante para hacer lo de los apuntadores indirectos
+			// Aqui se debe validar si es la iteracion 15 en adelante para hacer lo de los apuntadores indirectos
 			if !justSearchingAFile && len(parentsDir) != 0 {
 				return false, errors.New("ruta invalida, asegurese que exita la ruta antes")
 			}
@@ -848,7 +848,7 @@ func (sb *SuperBlock) folderFromAuntadorIndirecto13(diskPath string, inodeIndex 
 			return sb.folderFromAuntadorIndirecto13(diskPath, inodeIndex, parentsDir, destDir, justSearchingAFile, numApuntadorIndirecto, inodoPadre)
 		}
 
-		// Si es la iteracion 13,
+		// Si es la iteracion 15,
 		block := &FolderBlock{}
 		err := block.Deserialize(diskPath, int64(sb.S_block_start+(blockIndex*sb.S_block_size)))
 		if err != nil {

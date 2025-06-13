@@ -46,7 +46,7 @@ func ReportLs(path string, pathToGetInfo string) error {
 		if blockIndex == -1 {
 			break
 		}
-		if i >= 12 {
+		if i >= 15 {
 			pointerBlock := &structures.PointerBlock{}
 			err := pointerBlock.Deserialize(diskPath, int64(superBlock.S_block_start+(blockIndex*superBlock.S_block_size)))
 			if err != nil {
@@ -161,7 +161,7 @@ func getInode(sb *structures.SuperBlock, inodeIndex int32, diskPath string, pare
 		if blockIndex == -1 {
 			break
 		}
-		if i >= 12 {
+		if i >= 15 {
 			inderctNode := &structures.PointerBlock{}
 			err := inderctNode.Deserialize(diskPath, int64(sb.S_block_start+(sb.S_block_size*blockIndex)))
 			if err != nil {
