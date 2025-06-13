@@ -1,7 +1,7 @@
 package commands
 
 /*
-fdisk -size=1 -type=P -unit=M -fit=BF -name="Particion1" -path="/home/vela/Documentos/Go/202307705/test/Disco1.mia"
+fdisk -size=1 -type=P -unit=M -fit=BF -name="Particion1" -path="/home/vela/Documentos/Go/202307705/test/Disco1.dsk"
 
 */
 
