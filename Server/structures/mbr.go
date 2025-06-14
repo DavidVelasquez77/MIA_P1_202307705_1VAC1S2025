@@ -148,13 +148,23 @@ func (mbr *MBR) CanFitAnotherDisk(sizeBytes int) bool {
 
 }
 
-func (mbr *MBR) GetPartitionByID(id string) (*PARTITION, error) {
+func (mbr *MBR) GetPartitionByID(id string) (*PARTITION, int, error) {
 	for i := 0; i < len(mbr.Mbr_partitions); i++ {
 		partitionID := strings.Trim(string(mbr.Mbr_partitions[i].Part_id[:]), "\x00 ")
 		inputID := strings.Trim(id, "\x00 ")
 		if strings.EqualFold(partitionID, inputID) {
+			return &mbr.Mbr_partitions[i], i, nil
+		}
+	}
+	return nil, 0, errors.New("partición no encontrada LOL")
+}
+
+func (mbr *MBR) GetExtendedPartition() (*PARTITION, error) {
+	for i, part := range mbr.Mbr_partitions {
+		if part.Part_type[0] == 'E' {
 			return &mbr.Mbr_partitions[i], nil
 		}
 	}
-	return nil, errors.New("partición no encontrada")
+	return nil, errors.New("particion no encontada")
 }
+
