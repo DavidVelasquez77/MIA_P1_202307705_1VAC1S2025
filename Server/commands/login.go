@@ -1,13 +1,16 @@
 package commands
 
 import (
+	"encoding/binary"
 	"errors"
 	"fmt"
 	"regexp"
 	stores "server/stores"
+	"server/structures"
 	utils "server/utils"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type LOGIN struct {
@@ -91,6 +94,27 @@ func CommandLogin(login *LOGIN) error {
 	err = setUpIDs(login.User, contentMatrix)
 	if err != nil {
 		return err
+	}
+	sb, part, diskPath, err := stores.GetMountedPartitionSuperblock(stores.LogedIdPartition)
+	if err != nil {
+		return err
+	}
+	if sb.IsExt3() {
+		journalDirectory := &structures.Journal{
+			J_next: -1,
+			J_content: structures.Information{
+				I_operation: [10]byte{'l', 'o', 'g', 'i', 'n'},
+				I_path:      [74]byte{},
+				I_content:   [64]byte{},
+				I_date:      float32(time.Now().Unix()),
+			},
+		}
+		fullContent := fmt.Sprintf("%s/%s/%s", login.Id, login.User, login.Password)
+		copy(journalDirectory.J_content.I_content[:], fullContent)
+		err = sb.AddJournal(journalDirectory, diskPath, int32(part.Part_start+int32(binary.Size(structures.SuperBlock{}))))
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }
