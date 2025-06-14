@@ -75,7 +75,7 @@ func ParseMkusr(tokens []string) (string, error) {
 		return "", errors.New("faltan parametros requeridos: -grp")
 	}
 
-	err := commandMkusr(cmd)
+	err := CommandMkusr(cmd)
 	if err != nil {
 		return "", err
 	}
@@ -83,7 +83,7 @@ func ParseMkusr(tokens []string) (string, error) {
 	return fmt.Sprintf("MKUSR: usuario %s creado exitosamente", cmd.user), nil
 }
 
-func commandMkusr(mkusr *MKUSR) error {
+func CommandMkusr(mkusr *MKUSR) error {
 	if stores.LogedIdPartition == "" {
 		return errors.New("no hay sesion activa")
 	}
@@ -109,7 +109,13 @@ func commandMkusr(mkusr *MKUSR) error {
 	if err != nil {
 		return err
 	}
+	// fmt.Println("EL CONTADOR:", partitionSuperblock.S_blocks_count)
 	err = OverrideUserstxt(partitionSuperblock, partitionPath, contentUsersTxt)
+	if err != nil {
+		return err
+	}
+	// fmt.Println("EL CONTADOR NUEVO:", partitionSuperblock.S_blocks_count)
+	err = partitionSuperblock.Serialize(partitionPath, int64(mountedPartition.Part_start))
 	if err != nil {
 		return err
 	}
@@ -131,10 +137,10 @@ func commandMkusr(mkusr *MKUSR) error {
 		}
 	}
 
-	err = partitionSuperblock.Serialize(partitionPath, int64(mountedPartition.Part_start))
-	if err != nil {
-		return err
-	}
+	// err = partitionSuperblock.Serialize(partitionPath, int64(mountedPartition.Part_start))
+	// if err != nil {
+	// 	return err
+	// }
 	return nil
 }
 
