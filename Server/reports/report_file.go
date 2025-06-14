@@ -12,7 +12,8 @@ func ReportFile(sb *structures.SuperBlock, diskPath, path string, pathFileToGetI
 		return err
 	}
 	parentDirs, destDir := utils.GetParentDirectories(pathFileToGetInfo)
-	content, err := sb.ContentFromFile(diskPath, 0, parentDirs, destDir)
+
+	content, err := sb.ContentFromFileCat(diskPath, 0, parentDirs, destDir)
 	if err != nil {
 		return err
 	}
