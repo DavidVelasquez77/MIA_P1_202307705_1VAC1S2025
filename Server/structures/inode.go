@@ -5,6 +5,7 @@ import (
 	"encoding/binary"
 	"fmt"
 	"os"
+	"strconv"
 	"time"
 )
 
@@ -84,3 +85,91 @@ func (inode *Inode) Print() {
 	fmt.Printf("I_type: %s\n", string(inode.I_type[:]))
 	fmt.Printf("I_perm: %s\n", string(inode.I_perm[:]))
 }
+
+func (inode *Inode) HasPermissionsToWrite(userID, groupID int32) (bool, error) {
+	ownerUserId := inode.I_uid
+	ownerGroupId := inode.I_gid
+	permissions := string(inode.I_perm[:])
+
+	if ownerUserId == userID || userID == 1 {
+		permUser, err := strconv.Atoi(string(permissions[0]))
+		if err != nil {
+			return false, err
+		}
+		if permUser == 2 || permUser == 3 || permUser == 6 || permUser == 7 {
+			return true, nil
+		}
+	}
+	if ownerGroupId == groupID || userID == 1 {
+		permGroup, err := strconv.Atoi(string(permissions[1]))
+		if err != nil {
+			return false, err
+		}
+		if permGroup == 2 || permGroup == 3 || permGroup == 6 || permGroup == 7 {
+			return true, nil
+		}
+	}
+	permOther, err := strconv.Atoi(string(permissions[2]))
+	if err != nil {
+		return false, err
+	}
+	if permOther == 2 || permOther == 3 || permOther == 6 || permOther == 7 {
+		return true, nil
+	}
+	return false, nil
+}
+
+func (inode *Inode) HasPermissionsChmod(userID, groupID int32) (bool, error) {
+	ownerUserId := inode.I_uid
+	if ownerUserId == userID || userID == 1 {
+		return true, nil
+	}
+	return false, nil
+}
+func (inode *Inode) HasPermissionsToRead(userID, groupID int32) (bool, error) {
+	ownerUserId := inode.I_uid
+	ownerGroupId := inode.I_gid
+	permissions := string(inode.I_perm[:])
+
+	if ownerUserId == userID || userID == 1 {
+		permUser, err := strconv.Atoi(string(permissions[0]))
+		if err != nil {
+			return false, err
+		}
+		if permUser >= 4 {
+			return true, nil
+		}
+	}
+	if ownerGroupId == groupID || userID == 1 {
+		permGroup, err := strconv.Atoi(string(permissions[1]))
+		if err != nil {
+			return false, err
+		}
+		if permGroup >= 4 {
+			return true, nil
+		}
+	}
+	permOther, err := strconv.Atoi(string(permissions[2]))
+	if err != nil {
+		return false, err
+	}
+	if permOther >= 4 {
+		return true, nil
+	}
+	return false, nil
+}
+
+/*
+read: 4
+write: 2
+execute: 1
+D r w x
+0 0 0 0
+1 0 0 1
+2 0 1 0
+3 0 1 1
+4 1 0 0
+5 1 0 1
+6 1 1 0
+7 1 1 1
+*/
