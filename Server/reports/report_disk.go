@@ -50,14 +50,9 @@ func ReportDisk(mbr *structures.MBR, idDisk string, path string, pathDisk string
 			label="%s";
 			rankdir=LR
 			`, tipoParticion)
-			temp, bytesUsadosExtendida, err := getLogicNodes(pathDisk, partition.Part_start, tamanoTotalDisco)
-			if err != nil {
-				return err
-			}
-			porcentajeUsadoExtendida := (float64(bytesUsadosExtendida) / float64(tamanoTotalDisco)) * 100
-			dotContent += temp
-			dotContent += fmt.Sprintf(`node%d[shape=record, label="%s\n%.1f%%"];
-			}`, getNumberNode(), "Libre", percentagePartition-porcentajeUsadoExtendida)
+
+			dotContent += fmt.Sprintf(`node%d[shape=record, label="%s\n%d%%"];
+			}`, getNumberNode(), "Libre", 100)
 		} else {
 			dotContent += fmt.Sprintf(`node%d[shape=record, label="%s\n%.1f%%"];
 			`, getNumberNode(), tipoParticion, percentagePartition)
@@ -92,30 +87,4 @@ func ReportDisk(mbr *structures.MBR, idDisk string, path string, pathDisk string
 func getNumberNode() int32 {
 	contador++
 	return contador
-}
-
-func getLogicNodes(path string, offset int32, tamTotal int32) (string, float64, error) {
-	var percentage float64
-	ebr := &structures.EBR{}
-	err := ebr.DeserializeEBR(path, offset)
-	if err != nil {
-		return "", 0, err
-	}
-	if ebr.Part_next == -1 {
-		return "", 0, nil
-	}
-	percentageLogic := (float64(ebr.Part_size) / float64(tamTotal)) * 100
-	result := fmt.Sprintf(`node%d [shape=record, label="{EBR | Logica \n %.1f%%}"]
-			`, getNumberNode(), percentageLogic)
-
-	if ebr.Part_next != -1 {
-		temp, usado, err := getLogicNodes(path, ebr.Part_next, tamTotal)
-		if err != nil {
-			return "", 0, err
-		}
-		result += temp
-		percentage = usado
-	}
-	percentage += float64(ebr.Part_size)
-	return result, percentage, nil
 }
