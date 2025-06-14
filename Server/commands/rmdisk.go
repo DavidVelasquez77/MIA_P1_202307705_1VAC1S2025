@@ -6,7 +6,6 @@ import (
 	"os"
 	"regexp"
 	"server/stores"
-	"server/utils"
 	"strings"
 )
 
@@ -17,7 +16,7 @@ type RMDISK struct {
 func ParseRmdisk(tokens []string) (string, error) {
 	cmd := &RMDISK{}
 	args := strings.Join(tokens, " ")
-	re := regexp.MustCompile(`-path="[^"]+"|-path=[^\s]+`)
+	re := regexp.MustCompile(`-driveletter=[A-Za-z]`)
 	matches := re.FindAllString(args, -1)
 
 	for _, match := range matches {
@@ -32,9 +31,9 @@ func ParseRmdisk(tokens []string) (string, error) {
 		}
 
 		switch key {
-		case "-path":
+		case "-driveletter":
 			if value == "'" {
-				return "", errors.New("el path no puede venir vacio")
+				return "", errors.New("el driveletter no puede venir vacio")
 			}
 			cmd.path = value
 		default:
@@ -43,24 +42,15 @@ func ParseRmdisk(tokens []string) (string, error) {
 	}
 
 	if cmd.path == "" {
-		return "", errors.New("faltan parametros requeridos: -path")
+		return "", errors.New("faltan parametros requeridos: -driveletter")
 	}
-
-	// Obtener la letra del disco antes de eliminarlo
-	diskLetter := utils.GetDiskLetterFromPath(cmd.path)
-
+	cmd.path = stores.GetPathDisk(cmd.path)
 	err := commandRmdisk(cmd)
 	if err != nil {
 		return "", err
 	}
-
-	// Liberar la letra del disco
-	if diskLetter != "" {
-		utils.ReleaseDiskLetter(diskLetter)
-	}
-
 	stores.DeleteMountedPartitions(cmd.path)
-	return fmt.Sprintf("RMDISK: Disco %s eliminado exitosamente", diskLetter), nil
+	return fmt.Sprintf("RMDISK: %s eliminado exitosamente", cmd.path), nil
 
 }
 
