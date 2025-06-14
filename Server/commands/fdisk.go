@@ -1,17 +1,13 @@
 package commands
 
-/*
-fdisk -size=1 -type=P -unit=M -fit=BF -name="Particion1" -path="/home/vela/Documentos/Go/202307705/test/Disco1.dsk"
-
-*/
-
 import (
-	"encoding/binary"
+	"bufio"
 	"errors"
 	"fmt"
 	"io"
 	"os"
 	"regexp"
+	stores "server/stores"
 	"server/structures"
 	"server/utils"
 	"strconv"
@@ -33,7 +29,7 @@ func ParseFdisk(tokens []string) (string, error) {
 	cmd := &FDISK{}
 
 	args := strings.Join(tokens, " ")
-	re := regexp.MustCompile(`-size=\d+|-unit=[kKmMbB]|-fit=[bBfF]{2}|-path="[^"]+"|-path=[^\s]+|-type=[pPeElL]|-name="[^"]+"|-name=[^\s]+|-delete=[fFaAsStTuUlL]+|-add=-?\d+`)
+	re := regexp.MustCompile(`-size=\d+|-unit=[kKmMbB]|-fit=[bBfF]{2}|-driveletter=[A-Za-z]|-type=[pPeElL]|-name="[^"]+"|-name=[^\s]+|-delete=[fFuUlL]+|-add=-?\d+`)
 	matches := re.FindAllString(args, -1)
 
 	for _, match := range matches {
@@ -65,15 +61,15 @@ func ParseFdisk(tokens []string) (string, error) {
 				return "", errors.New("el ajuste debe ser BF, FF o WF")
 			}
 			cmd.fit = value
-		case "-path":
+		case "-driveletter":
 			if value == "" {
-				return "", errors.New("el path no puede estar vacío")
+				return "", errors.New("el driveletter no puede estar vacío")
 			}
 			cmd.path = value
 		case "-type":
 			value = strings.ToUpper(value)
-			if value != "P" && value != "E" && value != "L" {
-				return "", errors.New("el tipo debe ser P, E o L")
+			if value != "P" && value != "E" {
+				return "", errors.New("el tipo debe ser P o E")
 			}
 			cmd.typ = value
 		case "-name":
@@ -104,14 +100,15 @@ func ParseFdisk(tokens []string) (string, error) {
 		}
 	}
 	if cmd.path == "" {
-		return "", errors.New("faltan parámetros requeridos: -path")
+		return "", errors.New("faltan parámetros requeridos: -driveletter")
 	}
+	cmd.path = stores.GetPathDisk(cmd.path)
 	if cmd.name == "" {
 		return "", errors.New("faltan parámetros requeridos: -name")
 	}
 
 	if cmd.unit == "" {
-		cmd.unit = "M"
+		cmd.unit = "K"
 	}
 
 	if cmd.fit == "" {
@@ -121,13 +118,20 @@ func ParseFdisk(tokens []string) (string, error) {
 	if cmd.typ == "" {
 		cmd.typ = "P"
 	}
+	if cmd.delete != "" && cmd.add != 0 {
+		return "", errors.New("no se puede tener add y delete en el mismo comando")
+	}
 
 	if cmd.delete != "" {
-		err := deletePartition(cmd)
-		if err != nil {
-			return "", err
+		outcome := askConsent()
+		if outcome {
+			err := deletePartition(cmd)
+			if err != nil {
+				return "", err
+			}
+			return fmt.Sprintf("FDISK: %s delete exitosamente", cmd.name), nil
 		}
-		return fmt.Sprintf("FDISK: %s delete exitosamente", cmd.name), nil
+		return fmt.Sprintf("FDISK: %s delete cancelada exitosamente", cmd.name), nil
 	} else if cmd.add != 0 {
 		err := addPartition(cmd)
 		if err != nil {
@@ -142,6 +146,24 @@ func ParseFdisk(tokens []string) (string, error) {
 		return fmt.Sprintf("FDISK: %s creado exitosamente", cmd.name), nil
 	}
 
+}
+
+func askConsent() bool {
+	scanner := bufio.NewScanner(os.Stdin)
+	for {
+		fmt.Print("Desea confirmar la ejecucion del delete? [y/n]: ")
+		if !scanner.Scan() {
+			break
+		}
+		input := scanner.Text()
+		input = strings.ToLower(input)
+		if input == "y" {
+			return true
+		} else if input == "n" {
+			return false
+		}
+	}
+	return false
 }
 
 func commandFdisk(fdisk *FDISK) error {
@@ -161,13 +183,7 @@ func commandFdisk(fdisk *FDISK) error {
 		if err != nil {
 			return err
 		}
-	} else if fdisk.typ == "L" {
-		err = createLogicPartition(fdisk, sizeBytes)
-		if err != nil {
-			return err
-		}
 	}
-
 	return nil
 
 }
@@ -179,7 +195,6 @@ func createPrimaryPartition(fdisk *FDISK, sizeBytes int) error {
 	if err != nil {
 		return err
 	}
-
 	if !mbr.CanFitAnotherDisk(sizeBytes) {
 		return errors.New("no se puede crear una particion por falta de espacio")
 	}
@@ -209,6 +224,7 @@ func createPrimaryPartition(fdisk *FDISK, sizeBytes int) error {
 	if err != nil {
 		return err
 	}
+
 	return nil
 
 }
@@ -252,90 +268,6 @@ func createExtendedPartittion(fdisk *FDISK, sizeBytes int) error {
 		return err
 	}
 
-	// Creamos el EBR
-	err = createEBR(fdisk, startPartition)
-	if err != nil {
-		return err
-	}
-
-	return nil
-
-}
-
-func createEBR(fdisk *FDISK, offset int) error {
-
-	ebr := &structures.EBR{
-		Part_mount: [1]byte{'N'},
-		Part_fit:   [1]byte{'N'},
-		Part_start: -1,
-		Part_size:  -1,
-		Part_next:  -1,
-		Part_name:  [16]byte{'N'},
-	}
-
-	err := ebr.SerializeEBR(fdisk.path, int32(offset))
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-func createLogicPartition(fdisk *FDISK, sizeBytes int) error {
-	var mbr structures.MBR
-
-	err := mbr.DeserializeMBR(fdisk.path)
-	if err != nil {
-		return err
-	}
-	if !mbr.IsThereExtendedPartition() {
-		return errors.New("primero es necesario crear una particion extendida antes que una logica")
-	}
-
-	outcome, isTheLastOne, err := mbr.CanFitAnotherLogicPartition(fdisk.path, sizeBytes)
-	if err != nil {
-		return err
-	}
-	if !outcome {
-		return errors.New("no existe espacio suficiente para otra particion logica")
-	}
-
-	startPosition, extendedPartitionSize, err := mbr.GetOffsetFirstEBR()
-	if err != nil {
-		return err
-	}
-	var ebr structures.EBR
-
-	offset, err := ebr.DeserializeEBRAvailable(fdisk.path, int32(startPosition))
-	if err != nil {
-		return err
-	}
-
-	if extendedPartitionSize+startPosition < offset+int32(binary.Size(ebr))+int32(sizeBytes) {
-		return errors.New("no se puede crear la particion logica porque excede el tam de la particion extendida")
-	}
-
-	// fmt.Println("Antes de modificar el EBR: ")
-	// ebr.PrintEBR()
-
-	ebr.SetNeoEBR(fdisk.fit, int(offset), sizeBytes, fdisk.name)
-
-	// fmt.Println("Se ha seteado un nuevo EBR: ")
-	// ebr.PrintEBR()
-
-	err = ebr.SerializeEBR(fdisk.path, int32(ebr.Part_start-int32(binary.Size(ebr))))
-	if err != nil {
-		return err
-	}
-
-	// fmt.Println("El nuevo deberia estar en: ")
-	// fmt.Println(ebr.Part_next)
-	if !isTheLastOne {
-		err = createEBR(fdisk, int(ebr.Part_next))
-		if err != nil {
-			return err
-		}
-	}
-
 	return nil
 
 }
@@ -365,16 +297,6 @@ func deletePartition(fdisk *FDISK) error {
 		}
 		mbr.Mbr_partitions[indexPartition] = *cleanPartition
 		err = mbr.SerializeMBR(fdisk.path)
-		if err != nil {
-			return err
-		}
-	} else {
-		ebr := &structures.EBR{}
-		err := ebr.DeserializeEBR(fdisk.path, partition.Part_start)
-		if err != nil {
-			return err
-		}
-		partitionStart, partitionSize, err = ebr.DeleteEbr(fdisk.name, partition.Part_start, fdisk.path)
 		if err != nil {
 			return err
 		}
@@ -445,13 +367,6 @@ func shrinkPartition(fdisk *FDISK, sizeBytes int) error {
 		if err != nil {
 			return err
 		}
-	} else {
-		ebr := &structures.EBR{}
-		err := ebr.DeserializeEBR(fdisk.path, partition.Part_start)
-		if err != nil {
-			return err
-		}
-		return ebr.ShrinkEbr(fdisk.name, fdisk.path, partition.Part_start, sizeBytes)
 	}
 	return nil
 }
@@ -482,13 +397,6 @@ func increasePartition(fdisk *FDISK, sizeBytes int) error {
 		if err != nil {
 			return err
 		}
-	} else {
-		ebr := &structures.EBR{}
-		err := ebr.DeserializeEBR(fdisk.path, partition.Part_start)
-		if err != nil {
-			return err
-		}
-		return ebr.IsItPosibleToAdd(fdisk.name, fdisk.path, int(partition.Part_start), sizeBytes)
 	}
 	return nil
 }
