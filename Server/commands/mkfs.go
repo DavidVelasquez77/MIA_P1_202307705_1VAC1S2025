@@ -22,7 +22,7 @@ func ParseMkfs(tokens []string) (string, error) {
 	cmd := &MKFS{}
 
 	args := strings.Join(tokens, " ")
-	re := regexp.MustCompile(`-id=[a-zA-Z0-9]+|-type=full|-fs=[23]fs`)
+	re := regexp.MustCompile(`-id=[a-zA-Z0-9]+|-type=[fFuUlL]+|-fs=[23]fs`)
 	matches := re.FindAllString(args, -1)
 	for _, match := range matches {
 		kv := strings.SplitN(match, "=", 2)
