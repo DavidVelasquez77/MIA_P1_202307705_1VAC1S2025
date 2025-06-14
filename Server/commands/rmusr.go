@@ -51,7 +51,7 @@ func ParseRmusr(tokens []string) (string, error) {
 		return "", errors.New("faltan parametros requeridos: -user")
 	}
 
-	err := commandoRmusr(cmd)
+	err := CommandoRmusr(cmd)
 	if err != nil {
 		return "", err
 	}
@@ -59,7 +59,7 @@ func ParseRmusr(tokens []string) (string, error) {
 	return fmt.Sprintf("RMUSR: usuario %s eliminado exitosamente", cmd.user), nil
 }
 
-func commandoRmusr(rmusr *RMUSR) error {
+func CommandoRmusr(rmusr *RMUSR) error {
 	if stores.LogedIdPartition == "" {
 		return errors.New("no hay sesion activa")
 	}
