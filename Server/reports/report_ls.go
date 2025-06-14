@@ -33,7 +33,7 @@ func ReportLs(path string, pathToGetInfo string) error {
 	if err != nil {
 		return err
 	}
-	inodoBase, err := UbicarInodo(superBlock, pathToGetInfo, diskPath)
+	inodoBase, _, err := UbicarInodo(superBlock, pathToGetInfo, diskPath)
 	if err != nil {
 		return err
 	}
@@ -44,9 +44,9 @@ func ReportLs(path string, pathToGetInfo string) error {
 	// Contenido
 	for i, blockIndex := range inodoBase.I_block {
 		if blockIndex == -1 {
-			break
+			continue
 		}
-		if i >= 15 {
+		if i >= 14 {
 			pointerBlock := &structures.PointerBlock{}
 			err := pointerBlock.Deserialize(diskPath, int64(superBlock.S_block_start+(blockIndex*superBlock.S_block_size)))
 			if err != nil {
@@ -54,7 +54,7 @@ func ReportLs(path string, pathToGetInfo string) error {
 			}
 			for neoIndex := 0; neoIndex < len(pointerBlock.P_pointers); neoIndex++ {
 				if pointerBlock.P_pointers[neoIndex] == -1 {
-					break
+					continue
 				}
 				block := &structures.FolderBlock{}
 				err := block.Deserialize(diskPath, int64(superBlock.S_block_start+(pointerBlock.P_pointers[neoIndex]*superBlock.S_block_size)))
@@ -64,7 +64,7 @@ func ReportLs(path string, pathToGetInfo string) error {
 				for i := 2; i < len(block.B_content); i++ {
 					content := block.B_content[i]
 					if content.B_inodo == -1 {
-						break
+						continue
 					}
 					temp, err := getLsString(superBlock, content.B_inodo, strings.Trim(string(content.B_name[:]), "\x00"), diskPath)
 					if err != nil {
@@ -82,7 +82,7 @@ func ReportLs(path string, pathToGetInfo string) error {
 			for i := 2; i < len(block.B_content); i++ {
 				content := block.B_content[i]
 				if content.B_inodo == -1 {
-					break
+					continue
 				}
 				temp, err := getLsString(superBlock, content.B_inodo, strings.Trim(string(content.B_name[:]), "\x00"), diskPath)
 				if err != nil {
@@ -140,7 +140,7 @@ func getPermissions(dato string) string {
 	return result
 }
 
-func UbicarInodo(sb *structures.SuperBlock, dirPath string, diskPath string) (*structures.Inode, error) {
+func UbicarInodo(sb *structures.SuperBlock, dirPath string, diskPath string) (*structures.Inode, int32, error) {
 	parentDirs, destDir := utils.GetParentDirectories(dirPath)
 	if destDir != "" {
 		parentDirs = append(parentDirs, destDir)
@@ -148,42 +148,42 @@ func UbicarInodo(sb *structures.SuperBlock, dirPath string, diskPath string) (*s
 	return getInode(sb, 0, diskPath, parentDirs)
 }
 
-func getInode(sb *structures.SuperBlock, inodeIndex int32, diskPath string, parentsDir []string) (*structures.Inode, error) {
+func getInode(sb *structures.SuperBlock, inodeIndex int32, diskPath string, parentsDir []string) (*structures.Inode, int32, error) {
 	inode := &structures.Inode{}
 	err := inode.Deserialize(diskPath, int64(sb.S_inode_start+(inodeIndex*sb.S_inode_size)))
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 	if len(parentsDir) == 0 {
-		return inode, nil
+		return inode, inodeIndex, nil
 	}
 	for i, blockIndex := range inode.I_block {
 		if blockIndex == -1 {
-			break
+			continue
 		}
-		if i >= 15 {
+		if i >= 14 {
 			inderctNode := &structures.PointerBlock{}
 			err := inderctNode.Deserialize(diskPath, int64(sb.S_block_start+(sb.S_block_size*blockIndex)))
 			if err != nil {
-				return nil, err
+				return nil, 0, err
 			}
 			for _, value := range inderctNode.P_pointers {
 				if value == -1 {
-					break
+					continue
 				}
 				block := &structures.FolderBlock{}
 				err := block.Deserialize(diskPath, int64(sb.S_block_start+(value*sb.S_block_size)))
 				if err != nil {
-					return nil, err
+					return nil, 0, err
 				}
 				for indexContent := 2; indexContent < len(block.B_content); indexContent++ {
 					content := block.B_content[indexContent]
 					if content.B_inodo == -1 {
-						break
+						continue
 					}
 					parentDir, err := utils.First(parentsDir)
 					if err != nil {
-						return nil, err
+						return nil, 0, err
 					}
 
 					contentName := strings.Trim(string(content.B_name[:]), "\x00 ")
@@ -198,16 +198,16 @@ func getInode(sb *structures.SuperBlock, inodeIndex int32, diskPath string, pare
 			block := &structures.FolderBlock{}
 			err := block.Deserialize(diskPath, int64(sb.S_block_start+(blockIndex*sb.S_block_size)))
 			if err != nil {
-				return nil, err
+				return nil, 0, err
 			}
 			for indexContent := 2; indexContent < len(block.B_content); indexContent++ {
 				content := block.B_content[indexContent]
 				if content.B_inodo == -1 {
-					break
+					continue
 				}
 				parentDir, err := utils.First(parentsDir)
 				if err != nil {
-					return nil, err
+					return nil, 0, err
 				}
 
 				contentName := strings.Trim(string(content.B_name[:]), "\x00 ")
@@ -219,7 +219,7 @@ func getInode(sb *structures.SuperBlock, inodeIndex int32, diskPath string, pare
 		}
 
 	}
-	return nil, errors.New("no existe la ruta especificada")
+	return nil, 0, errors.New("no existe la ruta especificada")
 }
 
 func getLsString(sb *structures.SuperBlock, inodeIndex int32, nombre string, diskPath string) (string, error) {
