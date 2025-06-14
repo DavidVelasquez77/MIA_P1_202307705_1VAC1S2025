@@ -4,23 +4,24 @@ import (
 	"errors"
 	"fmt"
 	"regexp"
+	ext3 "server/Ext3Info"
 	"server/reports"
 	"server/stores"
 	"strings"
 )
 
 type REP struct {
-	name         string
-	path         string
-	id           string
-	path_file_ls string
+	name string
+	path string
+	id   string
+	ruta string
 }
 
 func ParseRep(tokens []string) (string, error) {
 	cmd := &REP{}
 
 	args := strings.Join(tokens, " ")
-	re := regexp.MustCompile(`-id=[a-zA-Z0-9]+|-path_file_ls="[^"]+"|-path_file_ls=[^\s]+|-path="[^"]+"|-path=[^\s]+|-name=[a-zA-Z_]+`)
+	re := regexp.MustCompile(`-id=[a-zA-Z0-9]+|-ruta="[^"]+"|-ruta=[^\s]+|-path="[^"]+"|-path=[^\s]+|-name=[a-zA-Z_]+`)
 	matches := re.FindAllString(args, -1)
 
 	for _, match := range matches {
@@ -35,11 +36,11 @@ func ParseRep(tokens []string) (string, error) {
 		}
 
 		switch key {
-		case "-path_file_ls":
+		case "-ruta":
 			if value == "" {
-				return "", errors.New("el path_file_is no puede estar vacio")
+				return "", errors.New("el ruta no puede estar vacio")
 			}
-			cmd.path_file_ls = value
+			cmd.ruta = value
 		case "-path":
 			if value == "" {
 				return "", errors.New("el path no puede estar vacio")
@@ -54,6 +55,7 @@ func ParseRep(tokens []string) (string, error) {
 			if value == "" {
 				return "", errors.New("el name no puede estar vacio")
 			}
+			value = strings.ToLower(value)
 			switch value {
 			case "mbr":
 				cmd.name = "mbr"
@@ -75,6 +77,8 @@ func ParseRep(tokens []string) (string, error) {
 				cmd.name = "file"
 			case "ls":
 				cmd.name = "ls"
+			case "journaling":
+				cmd.name = "journaling"
 			default:
 				return "", fmt.Errorf("valor del nombre invalido: %s", value)
 			}
@@ -148,12 +152,18 @@ func commandRep(rep *REP) error {
 			return err
 		}
 	case "file":
-		err = reports.ReportFile(mountedSb, mountedDiskPath, rep.path, rep.path_file_ls)
+
+		err = reports.ReportFile(mountedSb, mountedDiskPath, rep.path, rep.ruta)
 		if err != nil {
 			return err
 		}
 	case "ls":
-		err = reports.ReportLs(rep.path, rep.path_file_ls)
+		err = reports.ReportLs(rep.path, rep.ruta)
+		if err != nil {
+			return err
+		}
+	case "journaling":
+		err = ext3.ReportJournaling(rep.id, rep.path)
 		if err != nil {
 			return err
 		}
