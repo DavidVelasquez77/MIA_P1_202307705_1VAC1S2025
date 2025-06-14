@@ -48,7 +48,7 @@ func ReportInode(superBlock *structures.SuperBlock, diskPath, path string) error
             `, i, i, inode.I_uid, inode.I_gid, inode.I_size, atime, ctime, mtime, rune(inode.I_type[0]), string(inode.I_perm[:]))
 
 		for j, block := range inode.I_block {
-			if j > 14 {
+			if j > 13 {
 				break
 			}
 			dotContent += fmt.Sprintf("<tr><td BGCOLOR=\"#bbccaa\">%d</td><td>%d</td></tr>", j+1, block)
@@ -57,12 +57,8 @@ func ReportInode(superBlock *structures.SuperBlock, diskPath, path string) error
 		dotContent += fmt.Sprintf(`
                 <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
                 <tr><td BGCOLOR="#bbccaa">%d</td><td>%d</td></tr>
-                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO DOBLE</td></tr>
-                <tr><td BGCOLOR="#bbccaa">%d</td><td>%d</td></tr>
-                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO TRIPLE</td></tr>
-                <tr><td BGCOLOR="#bbccaa">%d</td><td>%d</td></tr>
             </table>>];
-        `, 16, inode.I_block[15], 17, inode.I_block[16], 18, inode.I_block[17])
+        `, 15, inode.I_block[14])
 
 		if i < superBlock.S_inodes_count-1 {
 			dotContent += fmt.Sprintf("inode%d -> inode%d;\n", i, i+1)
