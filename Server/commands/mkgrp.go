@@ -49,14 +49,14 @@ func ParseMkgrp(tokens []string) (string, error) {
 		return "", errors.New("parametro obligatorio: -name")
 	}
 
-	err := commmandMkgrp(cmd)
+	err := CommmandMkgrp(cmd)
 	if err != nil {
 		return "", err
 	}
 	return fmt.Sprintf("MKGRP: grupo %s creado exitosamente", cmd.name), nil
 }
 
-func commmandMkgrp(mkgrp *MKGRP) error {
+func CommmandMkgrp(mkgrp *MKGRP) error {
 	if stores.LogedIdPartition == "" {
 		return errors.New("no hay sesion activa")
 	}
@@ -83,6 +83,11 @@ func commmandMkgrp(mkgrp *MKGRP) error {
 	if err != nil {
 		return err
 	}
+
+	err = partitionSuperblock.Serialize(partitionPath, int64(mountedPartition.Part_start))
+	if err != nil {
+		return err
+	}
 	if partitionSuperblock.IsExt3() {
 		journalDirectory := &structures.Journal{
 			J_next: -1,
@@ -99,10 +104,10 @@ func commmandMkgrp(mkgrp *MKGRP) error {
 			return err
 		}
 	}
-	err = partitionSuperblock.Serialize(partitionPath, int64(mountedPartition.Part_start))
-	if err != nil {
-		return err
-	}
+	// err = partitionSuperblock.Serialize(partitionPath, int64(mountedPartition.Part_start))
+	// if err != nil {
+	// 	return err
+	// }
 	return nil
 }
 
@@ -140,6 +145,9 @@ func OverrideUserstxt(sb *structures.SuperBlock, diskPath, content string) error
 	}
 	contentChunks := utils.SplitStringIntoChunks(content)
 	for i, indexFileBlock := range inode.I_block {
+		if len(contentChunks) == 0 {
+			break
+		}
 		if indexFileBlock != -1 {
 			fileBlock := &structures.FileBlock{}
 			err := fileBlock.Deserialize(diskPath, int64(sb.S_block_start+(indexFileBlock*sb.S_block_size)))
@@ -168,11 +176,15 @@ func OverrideUserstxt(sb *structures.SuperBlock, diskPath, content string) error
 			if err != nil {
 				return err
 			}
+			// fmt.Println("EL CONTADOR:", sb.S_blocks_count)
 			sb.S_blocks_count++
+			// fmt.Println("EL CONTADOR NUEVO:", sb.S_blocks_count)
 			sb.S_free_blocks_count--
 			sb.S_first_blo += sb.S_block_size
+
 		}
 	}
+	inode.I_size = int32(len(content))
 	err = inode.Serialize(diskPath, int64(sb.S_inode_start+sb.S_inode_size))
 	if err != nil {
 		return err
