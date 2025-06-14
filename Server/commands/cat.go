@@ -60,6 +60,7 @@ func ParseCat(tokens []string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	fmt.Println(content)
 
 	return content, nil
 
@@ -74,11 +75,12 @@ func commandCat(cat *CAT) (string, error) {
 	}
 	for _, pathToGetInfo := range cat.files {
 		parentDirs, destDir := utils.GetParentDirectories(pathToGetInfo)
-		content, err := partitionSuperblock.ContentFromFile(partitionPath, 0, parentDirs, destDir)
+
+		content, err := partitionSuperblock.ContentFromFileCat(partitionPath, 0, parentDirs, destDir)
 		if err != nil {
 			return "", err
 		}
-		result += content
+		result += content + "\n"
 	}
 	return result, nil
 }
