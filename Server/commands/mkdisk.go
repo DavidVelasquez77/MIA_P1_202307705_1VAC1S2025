@@ -1,20 +1,19 @@
 package commands
 
 import (
-	// Paquete para manejar errores y crear nuevos errores con mensajes personalizados
 	"errors"
-	"fmt" // Paquete para formatear cadenas y realizar operaciones de entrada/salida
+	"fmt"
 	"math/rand"
 	"os"
 	"path/filepath"
-	"server/stores"
+	stores "server/stores"
 	structures "server/structures"
 	utils "server/utils"
 	"strconv"
 	"time"
 
-	"regexp"  // Paquete para trabajar con expresiones regulares, útil para encontrar y manipular patrones en cadenas
-	"strings" // Paquete para manipular cadenas, como unir, dividir, y modificar contenido de cadenas
+	"regexp"
+	"strings"
 )
 
 type MKDISK struct {
@@ -26,9 +25,10 @@ type MKDISK struct {
 
 func ParseMkdisk(tokens []string) (string, error) {
 	cmd := &MKDISK{}
-
+	letterDisk := utils.GetLetterToDisk()
+	cmd.path = stores.GetPathDisk(letterDisk)
 	args := strings.Join(tokens, " ")
-	re := regexp.MustCompile(`-size=\d+|-unit=[kKmM]|-fit=[bBfFwW]{2}|-path="[^"]+"|-path=[^\s]+`)
+	re := regexp.MustCompile(`-size=\d+|-unit=[kKmM]|-fit=[bBfFwW]{2}`)
 	matches := re.FindAllString(args, -1)
 	for _, match := range matches {
 		kv := strings.SplitN(match, "=", 2)
@@ -60,15 +60,6 @@ func ParseMkdisk(tokens []string) (string, error) {
 				return "", errors.New("el ajuste debe ser BF, FF o WF")
 			}
 			cmd.fit = value
-		case "-path":
-			if value == "" {
-				return "", errors.New("el path no puede estar vacio")
-			}
-			// Asegurar que el archivo tenga extensión .dsk
-			if !strings.HasSuffix(strings.ToLower(value), ".dsk") {
-				value = strings.TrimSuffix(value, filepath.Ext(value)) + ".dsk"
-			}
-			cmd.path = value
 		default:
 			return "", fmt.Errorf("parametro desconocido: %s", key)
 		}
@@ -77,34 +68,19 @@ func ParseMkdisk(tokens []string) (string, error) {
 	if cmd.size == 0 {
 		return "", errors.New("faltan parametros requeridos: -size")
 	}
-	if cmd.path == "" {
-		return "", errors.New("faltan parametros requeridos: -path")
-	}
-
 	if cmd.unit == "" {
-		cmd.unit = "M"
+		cmd.unit = "K"
 	}
 	if cmd.fit == "" {
 		cmd.fit = "FF"
 	}
-
-	// Generar nombre de disco automáticamente con letra
-	diskLetter, err := utils.GetNextAvailableDiskLetter()
+	err := commandMkdisk(cmd)
 	if err != nil {
 		return "", err
 	}
-
-	// Actualizar la ruta para usar la letra del disco
-	dir := filepath.Dir(cmd.path)
-	cmd.path = filepath.Join(dir, diskLetter+".dsk")
-
-	err = commandMkdisk(cmd)
-	if err != nil {
-		utils.ReleaseDiskLetter(diskLetter)
-		return "", err
-	}
-	stores.LoadedDiskPaths[diskLetter] = cmd.path
-	return fmt.Sprintf("MKDISK: Disco %s creado exitosamente en %s", diskLetter, cmd.path), nil
+	name := utils.GetNameByPath(cmd.path)
+	stores.LoadedDiskPaths[name] = cmd.path
+	return fmt.Sprintf("MKDISK: %s creado exitosamente", cmd.path), nil
 
 }
 
