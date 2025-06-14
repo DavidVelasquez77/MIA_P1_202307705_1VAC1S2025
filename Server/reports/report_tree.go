@@ -83,7 +83,7 @@ func getInodeDOT(sb *structures.SuperBlock, inode *structures.Inode, diskPath st
 		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
 	`, nodoActual, numberInode, inode.I_uid, inode.I_gid, inode.I_size, atime, ctime, mtime, rune(inode.I_type[0]), string(inode.I_perm[:]))
 	for j, block := range inode.I_block {
-		if j > 14 {
+		if j > 13 {
 			break
 		}
 		dotContent += fmt.Sprintf("<tr><td >%d</td><td>%d</td></tr>", j+1, block)
@@ -92,12 +92,8 @@ func getInodeDOT(sb *structures.SuperBlock, inode *structures.Inode, diskPath st
 	dotContent += fmt.Sprintf(`
 			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
 			<tr><td >%d</td><td>%d</td></tr>
-			<tr><td  colspan="2">BLOQUE INDIRECTO DOBLE</td></tr>
-			<tr><td >%d</td><td>%d</td></tr>
-			<tr><td  colspan="2">BLOQUE INDIRECTO TRIPLE</td></tr>
-			<tr><td >%d</td><td>%d</td></tr>
 		</table>>];
-	`, 16, inode.I_block[15], 17, inode.I_block[16], 18, inode.I_block[17])
+	`, 15, inode.I_block[14])
 
 	// Hacer las direcciones de todos los nodos q este kabron saca del Iblock
 	if !isTheRoot {
@@ -107,7 +103,7 @@ func getInodeDOT(sb *structures.SuperBlock, inode *structures.Inode, diskPath st
 
 	for i, value := range inode.I_block {
 		if value != -1 {
-			if i >= 15 {
+			if i >= 14 {
 				block := &structures.PointerBlock{}
 				err := block.Deserialize(diskPath, int64(sb.S_block_start+(value*sb.S_block_size)))
 				if err != nil {
@@ -206,7 +202,7 @@ func getPointerBlockDOT(sb *structures.SuperBlock, block *structures.PointerBloc
 	`, nodoPadre, nodoActual)
 	for _, indexInode := range block.P_pointers {
 		if indexInode == -1 {
-			break
+			continue
 		}
 		if tipoInodo == '0' {
 			block := &structures.FolderBlock{}
