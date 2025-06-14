@@ -68,11 +68,11 @@ func getStringBlock(inode *structures.Inode, diskPath string, sb *structures.Sup
 	for i, blockIndex := range inode.I_block {
 
 		if blockIndex == -1 {
-			break
+			continue
 		}
 		fValue := getNumber()
 		// Aqui diferenciar si es de tipo 0 o 1 el Inodo
-		if i >= 15 {
+		if i >= 14 {
 			pointerBlock := structures.PointerBlock{}
 			err := pointerBlock.Deserialize(diskPath, int64(sb.S_block_start+(blockIndex*sb.S_block_size)))
 			if err != nil {
@@ -89,7 +89,7 @@ func getStringBlock(inode *structures.Inode, diskPath string, sb *structures.Sup
 			`
 			for iTe, neoIndexBlock := range pointerBlock.P_pointers {
 				if neoIndexBlock == -1 {
-					break
+					continue
 				}
 				neoFValue := getNumber()
 				if inode.I_type[0] == '0' {
@@ -110,7 +110,7 @@ func getStringBlock(inode *structures.Inode, diskPath string, sb *structures.Sup
 
 						content := block.B_content[neoInodeIndex]
 						if content.B_inodo == -1 {
-							break
+							continue
 						}
 						inode := &structures.Inode{}
 						err = inode.Deserialize(diskPath, int64(sb.S_inode_start+(sb.S_inode_size*content.B_inodo)))
