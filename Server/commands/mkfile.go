@@ -72,7 +72,7 @@ func ParseMkfile(tokens []string) (string, error) {
 		return "", errors.New("faltan parametros requeridos: -path")
 	}
 
-	err := commandMkfile(cmd)
+	err := CommandMkfile(cmd)
 	if err != nil {
 		return "", err
 	}
@@ -80,7 +80,7 @@ func ParseMkfile(tokens []string) (string, error) {
 	return fmt.Sprintf("MKFILE: %s creado exitosamente", cmd.path), nil
 }
 
-func commandMkfile(mkfile *MKFILE) error {
+func CommandMkfile(mkfile *MKFILE) error {
 
 	partitionSuperblock, mountedPartition, partitionPath, err := stores.GetMountedPartitionSuperblock(stores.LogedIdPartition)
 	if err != nil {
