@@ -25,8 +25,8 @@ func (sb *SuperBlock) createFolderInInode(path string, inodeIndex int32, parents
 			if !justSearchingAFile && len(parentsDir) != 0 {
 				return errors.New("ruta invalida, asegurese que exita la ruta antes")
 			}
-			// Aqui se debe validar si es la iteracion 15 en adelante para hacer lo de los apuntadores indirectos
-			if i >= 15 {
+			// Aqui se debe validar si es la iteracion 13 en adelante para hacer lo de los apuntadores indirectos
+			if i >= 14 {
 				inode.I_block[i] = sb.S_blocks_count
 
 				pointerBlock := &PointerBlock{
@@ -102,7 +102,7 @@ func (sb *SuperBlock) createFolderInInode(path string, inodeIndex int32, parents
 			}
 		}
 
-		if i >= 15 {
+		if i >= 14 {
 			flag, err := sb.folderFromAuntadorIndirecto13(path, inodeIndex, parentsDir, destDir, justSearchingAFile, blockIndex, inodoPadre)
 			if err != nil {
 				return err
@@ -124,7 +124,7 @@ func (sb *SuperBlock) createFolderInInode(path string, inodeIndex int32, parents
 			if len(parentsDir) != 0 {
 
 				if content.B_inodo == -1 {
-					break
+					continue
 				}
 
 				parentDir, err := utils.First(parentsDir)
@@ -152,7 +152,13 @@ func (sb *SuperBlock) createFolderInInode(path string, inodeIndex int32, parents
 					inodoPadre = tempContent.B_inodo
 					continue
 				}
-
+				outcome, err := inode.HasPermissionsToWrite(utils.LogedUserID, utils.LogedUserGroupID)
+				if err != nil {
+					return err
+				}
+				if !outcome {
+					return errors.New("inaccesible por falta de permisos")
+				}
 				copy(content.B_name[:], destDir)
 				content.B_inodo = sb.S_inodes_count
 
@@ -253,7 +259,7 @@ func existTheDirectory(inodo *Inode, nameDir string, path string, sb *SuperBlock
 		if blockIndex == -1 {
 			return false, 0, nil
 		}
-		if i >= 15 {
+		if i >= 14 {
 			pointerBlock := &PointerBlock{}
 			err := pointerBlock.Deserialize(path, int64(sb.S_block_start+(sb.S_block_size*blockIndex)))
 			if err != nil {
@@ -261,7 +267,7 @@ func existTheDirectory(inodo *Inode, nameDir string, path string, sb *SuperBlock
 			}
 			for _, value := range pointerBlock.P_pointers {
 				if value == -1 {
-					break
+					continue
 				}
 				block := &FolderBlock{}
 				err := block.Deserialize(path, int64(sb.S_block_start+(sb.S_block_size*value)))
@@ -313,8 +319,8 @@ func (sb *SuperBlock) CreateFile(diskPath string, inodeIndex int32, parentsDir [
 			if !justSearchingAFile && len(parentsDir) != 0 {
 				return errors.New("ruta invalida, asegurese que exita la ruta antes")
 			}
-			// Aqui se debe validar si es la iteracion 15 en adelante para hacer lo de los apuntadores indirectos
-			if i >= 15 {
+			// Aqui se debe validar si es la iteracion 13 en adelante para hacer lo de los apuntadores indirectos
+			if i >= 14 {
 				inode.I_block[i] = sb.S_blocks_count
 
 				pointerBlock := &PointerBlock{
@@ -390,7 +396,7 @@ func (sb *SuperBlock) CreateFile(diskPath string, inodeIndex int32, parentsDir [
 			}
 		}
 
-		if i >= 15 {
+		if i >= 14 {
 			pointerBlock := &PointerBlock{}
 			err := pointerBlock.Deserialize(diskPath, int64(sb.S_block_start+(blockIndex*sb.S_block_size)))
 			if err != nil {
@@ -398,7 +404,7 @@ func (sb *SuperBlock) CreateFile(diskPath string, inodeIndex int32, parentsDir [
 			}
 			for _, neoBlockIndex := range pointerBlock.P_pointers {
 				if neoBlockIndex == -1 {
-					break
+					continue
 				}
 				block := &FolderBlock{}
 				err := block.Deserialize(diskPath, int64(sb.S_block_start+(neoBlockIndex*sb.S_block_size)))
@@ -409,7 +415,7 @@ func (sb *SuperBlock) CreateFile(diskPath string, inodeIndex int32, parentsDir [
 					content := block.B_content[indexContent]
 					if len(parentsDir) != 0 {
 						if content.B_inodo == -1 {
-							break
+							continue
 						}
 						parentDir, err := utils.First(parentsDir)
 						if err != nil {
@@ -473,12 +479,12 @@ func (sb *SuperBlock) CreateFile(diskPath string, inodeIndex int32, parentsDir [
 						sb.S_first_ino += sb.S_inode_size
 						// Flag de repetir el llenado
 						flagToCreateNeoBlockPointer := true
-						tempCont := 15
+						tempCont := 14
 						// Index del bloque pointer
 						var indexBlockPointer int32
 						tempBlockPointer := &PointerBlock{}
 						for i, content := range contentChunks {
-							if i >= 15 { //Aputnadores indirectos
+							if i >= 14 { //Aputnadores indirectos
 								if flagToCreateNeoBlockPointer {
 									for id, value := range folderInode.I_block {
 										if value == -1 {
@@ -552,7 +558,7 @@ func (sb *SuperBlock) CreateFile(diskPath string, inodeIndex int32, parentsDir [
 			content := block.B_content[indexContent]
 			if len(parentsDir) != 0 {
 				if content.B_inodo == -1 {
-					break
+					continue
 				}
 				parentDir, err := utils.First(parentsDir)
 				if err != nil {
@@ -572,6 +578,13 @@ func (sb *SuperBlock) CreateFile(diskPath string, inodeIndex int32, parentsDir [
 				destinationName := strings.Trim(destDir, "\x00")
 				if strings.EqualFold(contentName, destinationName) {
 					return errors.New("ya existe un file con el mismo nombre")
+				}
+				outcome, err := inode.HasPermissionsToWrite(utils.LogedUserID, utils.LogedUserGroupID)
+				if err != nil {
+					return err
+				}
+				if !outcome {
+					return errors.New("inaccesible por falta de permisos")
 				}
 				if content.B_inodo != -1 {
 					tempContent := block.B_content[1]
@@ -616,12 +629,12 @@ func (sb *SuperBlock) CreateFile(diskPath string, inodeIndex int32, parentsDir [
 				sb.S_first_ino += sb.S_inode_size
 				// Flag de repetir el llenado
 				flagToCreateNeoBlockPointer := true
-				tempCont := 15
+				tempCont := 14
 				// Index del bloque pointer
 				var indexBlockPointer int32
 				tempBlockPointer := &PointerBlock{}
 				for i, content := range contentChunks {
-					if i >= 15 { //Aputnadores indirectos
+					if i >= 14 { //Aputnadores indirectos
 						if flagToCreateNeoBlockPointer {
 							for id, value := range folderInode.I_block {
 								if value == -1 {
@@ -742,7 +755,7 @@ func (sb *SuperBlock) ContentFromFile(diskPath string, inodeIndex int32, parents
 			content := block.B_content[indexContent]
 			if len(parentsDir) != 0 {
 				if content.B_inodo == -1 {
-					break
+					continue
 				}
 				parentDir, err := utils.First(parentsDir)
 				if err != nil {
@@ -767,9 +780,9 @@ func (sb *SuperBlock) ContentFromFile(diskPath string, inodeIndex int32, parents
 					var content string
 					for iTe, value := range inodoFile.I_block {
 						if value == -1 {
-							break
+							continue
 						}
-						if iTe >= 15 {
+						if iTe >= 14 {
 							pointerBlock := &PointerBlock{}
 							err := pointerBlock.Deserialize(diskPath, int64(sb.S_block_start+(sb.S_block_size*value)))
 							if err != nil {
@@ -777,7 +790,106 @@ func (sb *SuperBlock) ContentFromFile(diskPath string, inodeIndex int32, parents
 							}
 							for _, indexContentBlock := range pointerBlock.P_pointers {
 								if indexContentBlock == -1 {
-									break
+									continue
+								}
+								blockContentFile := &FileBlock{}
+								blockContentFile.Deserialize(diskPath, int64(sb.S_block_start+(sb.S_block_size*indexContentBlock)))
+								contentBlock := string(blockContentFile.B_content[:])
+								contentBlock = strings.TrimRight(contentBlock, "\x00")
+								content += contentBlock
+							}
+						} else {
+							blockContentFile := &FileBlock{}
+							blockContentFile.Deserialize(diskPath, int64(sb.S_block_start+(sb.S_block_size*value)))
+							contentBlock := string(blockContentFile.B_content[:])
+							contentBlock = strings.TrimRight(contentBlock, "\x00")
+							content += contentBlock
+						}
+					}
+					return content, nil
+				}
+				if content.B_inodo != -1 {
+					continue
+				}
+			}
+		}
+	}
+	return "", errors.New("se ha producido un error en reportFile")
+}
+
+func (sb *SuperBlock) ContentFromFileCat(diskPath string, inodeIndex int32, parentsDir []string, destDir string) (string, error) {
+	inode := &Inode{}
+	err := inode.Deserialize(diskPath, int64(sb.S_inode_start+(inodeIndex*sb.S_inode_size)))
+	if err != nil {
+		return "", err
+	}
+	if inode.I_type[0] == '1' {
+		return "", errors.New("se entro a un Inodo tipo file en reportFile")
+	}
+	// outcome, err := inode.HasPermissionsToRead(utils.LogedUserID, utils.LogedUserGroupID)
+	// if err != nil {
+	// 	return "", err
+	// }
+	// if !outcome {
+	// 	return "", errors.New("inaccesible por falta de permisos")
+	// }
+	for _, blockIndex := range inode.I_block {
+
+		if blockIndex == -1 {
+			return "", errors.New("error en el path solicitado para extraer informacion de un archivo")
+		}
+		block := &FolderBlock{}
+		err := block.Deserialize(diskPath, int64(sb.S_block_start+(blockIndex*sb.S_block_size)))
+		if err != nil {
+			return "", err
+		}
+		for indexContent := 2; indexContent < len(block.B_content); indexContent++ {
+			content := block.B_content[indexContent]
+			if len(parentsDir) != 0 {
+				if content.B_inodo == -1 {
+					continue
+				}
+				parentDir, err := utils.First(parentsDir)
+				if err != nil {
+					return "", err
+				}
+				contentName := strings.Trim(string(content.B_name[:]), "\x00")
+				parentDirName := strings.Trim(parentDir, "\x00")
+				if strings.EqualFold(contentName, parentDirName) {
+					content, err := sb.ContentFromFileCat(diskPath, content.B_inodo, utils.RemoveElement(parentsDir, 0), destDir)
+					if err != nil {
+						return "", err
+					}
+					return content, nil
+				}
+			} else {
+				contentName := strings.Trim(string(content.B_name[:]), "\x00")
+				destinationName := strings.Trim(destDir, "\x00")
+				if strings.EqualFold(contentName, destinationName) {
+					// Son iguales
+					inodoFile := &Inode{}
+					inodoFile.Deserialize(diskPath, int64(sb.S_inode_start+(content.B_inodo*sb.S_inode_size)))
+					outcome, err := inodoFile.HasPermissionsToRead(utils.LogedUserID, utils.LogedUserGroupID)
+					if err != nil {
+						return "", err
+					}
+					if !outcome {
+						return "inaccesible por falta de permisos", nil
+					}
+					var content string
+					for iTe, value := range inodoFile.I_block {
+						if value == -1 {
+							continue
+						}
+						if iTe >= 14 {
+							pointerBlock := &PointerBlock{}
+							err := pointerBlock.Deserialize(diskPath, int64(sb.S_block_start+(sb.S_block_size*value)))
+							if err != nil {
+								return "", err
+							}
+							for _, indexContentBlock := range pointerBlock.P_pointers {
+								if indexContentBlock == -1 {
+									continue
 								}
 								blockContentFile := &FileBlock{}
 								blockContentFile.Deserialize(diskPath, int64(sb.S_block_start+(sb.S_block_size*indexContentBlock)))
@@ -813,7 +925,7 @@ func (sb *SuperBlock) folderFromAuntadorIndirecto13(diskPath string, inodeIndex 
 
 	for i, blockIndex := range pointerBlock.P_pointers {
 		if blockIndex == -1 {
-			// Aqui se debe validar si es la iteracion 15 en adelante para hacer lo de los apuntadores indirectos
+			// Aqui se debe validar si es la iteracion 13 en adelante para hacer lo de los apuntadores indirectos
 			if !justSearchingAFile && len(parentsDir) != 0 {
 				return false, errors.New("ruta invalida, asegurese que exita la ruta antes")
 			}
@@ -848,7 +960,7 @@ func (sb *SuperBlock) folderFromAuntadorIndirecto13(diskPath string, inodeIndex 
 			return sb.folderFromAuntadorIndirecto13(diskPath, inodeIndex, parentsDir, destDir, justSearchingAFile, numApuntadorIndirecto, inodoPadre)
 		}
 
-		// Si es la iteracion 15,
+		// Si es la iteracion 13,
 		block := &FolderBlock{}
 		err := block.Deserialize(diskPath, int64(sb.S_block_start+(blockIndex*sb.S_block_size)))
 		if err != nil {
@@ -861,7 +973,7 @@ func (sb *SuperBlock) folderFromAuntadorIndirecto13(diskPath string, inodeIndex 
 			if len(parentsDir) != 0 {
 
 				if content.B_inodo == -1 {
-					break
+					continue
 				}
 
 				parentDir, err := utils.First(parentsDir)
