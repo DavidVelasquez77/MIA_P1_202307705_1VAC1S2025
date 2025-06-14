@@ -14,8 +14,8 @@ mount -driveletter=a -name=par1
 mount -driveletter=a -name=par3 
 #mounted
 #unmount -id=A205
-#mounted
-#rep -id=A105 -path=/home/vela/Documentos/usac/MIA_P1_202307705_1VAC1S2025/test/output/MBRPE.png -name=mbr
+#mounted 
+#rep -id=A105 -path=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/output/MBRPE.png -name=mbr
 
 mkfs -type=full -id=A105 -fs=3fs
 
@@ -66,8 +66,8 @@ login -user=user1 -pass=abc -id=A105
 logout 
 login -user=root -pass=123 -id=A105
 mkfile -path=/home/archivos/user/docs/Tarea.txt -size=75
-mkfile -path=/home/archivos/user/docs/Tarea2.txt -size=1200
-mkfile -path=/home/archivos/user/docs/Tarea3.txt -size=10 -cont=/home/vela/Documentos/usac/MIA_P1_202307705_1VAC1S2025/test/NAME.txt
+mkfile -path=/home/archivos/user/docs/Tarea2.txt -size=1200  
+mkfile -path=/home/archivos/user/docs/Tarea3.txt -size=10 -cont=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/NAME.txt
 
 
 #ERROR NO EXISTE RUTA

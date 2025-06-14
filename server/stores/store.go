@@ -9,8 +9,8 @@ import (
 	"strings"
 )
 
-const Carnet string = "05"                                                            //2023007705
-const PathDisk string = "/home/vela/Documentos/usac/MIA_P1_202307705_1VAC1S2025/test" //FIXME cambiar el path
+const Carnet string = "05"                                                          //2023007705
+const PathDisk string = "/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test" //FIXME cambiar el path
 
 var (
 	MountedPartitions map[string]string = make(map[string]string) //ID:path
