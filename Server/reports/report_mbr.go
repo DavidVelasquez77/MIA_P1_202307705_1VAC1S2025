@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	stores "server/stores"
 	structures "server/structures"
 	utils "server/utils"
 	"strings"
@@ -32,7 +31,7 @@ func ReportMBR(mbr *structures.MBR, path string, idDisk string) error {
 	for i, part := range mbr.Mbr_partitions {
 
 		if part.Part_type[0] == 'N' {
-			break
+			continue
 		}
 
 		partName := strings.TrimRight(string(part.Part_name[:]), "\x00")
@@ -51,13 +50,7 @@ func ReportMBR(mbr *structures.MBR, path string, idDisk string) error {
 			`, i+1, partStatus, partType, partFit, part.Part_start, part.Part_size, partName)
 
 		if part.Part_type[0] == 'E' {
-
-
-			aditionalContent, err := getLogicTables(stores.MountedPartitions[idDisk], part.Part_start)
-			if err != nil {
-				return err
-			}
-			dotContent += aditionalContent
+			dotContent += ""
 		}
 	}
 
@@ -81,39 +74,4 @@ func ReportMBR(mbr *structures.MBR, path string, idDisk string) error {
 	}
 
 	return nil
-}
-
-func getLogicTables(path string, offset int32) (string, error) {
-	ebr := &structures.EBR{}
-	err := ebr.DeserializeEBR(path, offset)
-	if err != nil {
-		return "", err
-	}
-	if ebr.Part_next == -1 {
-		return "", nil
-	}
-
-	partStatus := rune(ebr.Part_mount[0])
-	partFit := rune(ebr.Part_fit[0])
-	partName := strings.TrimRight(string(ebr.Part_name[:]), "\x00")
-
-	result := fmt.Sprintf(`
-				<tr><td colspan="2" BGCOLOR="#bbaacc"> PARTICIÓN LOGICA </td></tr>
-				<tr><td BGCOLOR="#bbaacc">part_status</td><td>%c</td></tr>
-				<tr><td BGCOLOR="#bbaacc">part_next</td><td>%d</td></tr>
-				<tr><td BGCOLOR="#bbaacc">part_fit</td><td>%c</td></tr>
-				<tr><td BGCOLOR="#bbaacc">part_start</td><td>%d</td></tr>
-				<tr><td BGCOLOR="#bbaacc">part_size</td><td>%d</td></tr>
-				<tr><td BGCOLOR="#bbaacc">part_name</td><td>%s</td></tr>
-			`, partStatus, ebr.Part_next, partFit, ebr.Part_start, ebr.Part_size, partName)
-
-
-	if ebr.Part_next != -1 {
-		temp, err := getLogicTables(path, ebr.Part_next)
-		if err != nil {
-			return "", err
-		}
-		result += temp
-	}
-	return result, nil
 }
