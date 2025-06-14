@@ -47,7 +47,7 @@ func ParseRmgrp(tokens []string) (string, error) {
 	if cmd.name == "" {
 		return "", errors.New("parametro obligatorio: -name")
 	}
-	err := commandRmgrp(cmd)
+	err := CommandRmgrp(cmd)
 	if err != nil {
 		return "", err
 	}
@@ -56,7 +56,7 @@ func ParseRmgrp(tokens []string) (string, error) {
 
 }
 
-func commandRmgrp(rmgrp *RMGRP) error {
+func CommandRmgrp(rmgrp *RMGRP) error {
 	if stores.LogedIdPartition == "" {
 		return errors.New("no hay sesion activa")
 	}
