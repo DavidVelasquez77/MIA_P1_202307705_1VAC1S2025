@@ -11,15 +11,16 @@ import (
 )
 
 type MOUNT struct {
-	path string
-	name string
+	path        string
+	name        string
+	driveLetter string
 }
 
 func ParseMount(tokens []string) (string, error) {
 	cmd := &MOUNT{}
 
 	args := strings.Join(tokens, " ")
-	re := regexp.MustCompile(`-path="[^"]+"|-path=[^\s]+|-name="[^"]+"|-name=[^\s]+`)
+	re := regexp.MustCompile(`-driveletter=[A-Za-z]|-name="[^"]+"|-name=[^\s]+`)
 	matches := re.FindAllString(args, -1)
 
 	for _, match := range matches {
@@ -33,9 +34,9 @@ func ParseMount(tokens []string) (string, error) {
 			value = strings.Trim(value, "\"")
 		}
 		switch key {
-		case "-path":
+		case "-driveletter":
 			if value == "" {
-				return "", errors.New("el pathno puede estar vacio")
+				return "", errors.New("el driveletter no puede estar vacio")
 			}
 			cmd.path = value
 		case "-name":
@@ -49,11 +50,13 @@ func ParseMount(tokens []string) (string, error) {
 	}
 
 	if cmd.path == "" {
-		return "", errors.New("faltan parámetros requeridos: -path")
+		return "", errors.New("faltan parámetros requeridos: -driveletter")
 	}
 	if cmd.name == "" {
 		return "", errors.New("faltan parámetros requeridos: -name")
 	}
+	cmd.driveLetter = strings.ToUpper(cmd.path)
+	cmd.path = stores.GetPathDisk(cmd.driveLetter)
 	err := commandMount(cmd)
 	if err != nil {
 		return "", err
@@ -105,12 +108,12 @@ func commandMount(mount *MOUNT) error {
 }
 
 func generatePartitionID(mount *MOUNT) (string, error) {
-	letter, partitionCorrelative, err := utils.GetLetter(mount.path)
+	_, partitionCorrelative, err := utils.GetLetter(mount.path)
 	if err != nil {
 		return "", err
 	}
 
-	idPartition := fmt.Sprintf("%s%d%s", stores.Carnet, partitionCorrelative, letter)
+	idPartition := fmt.Sprintf("%s%d%s", mount.driveLetter, partitionCorrelative, stores.Carnet)
 
 	return idPartition, nil
 
