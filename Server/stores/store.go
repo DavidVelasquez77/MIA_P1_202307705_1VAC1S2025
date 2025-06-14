@@ -2,13 +2,15 @@ package stores
 
 import (
 	"errors"
+	"fmt"
 	"path/filepath"
 	"server/structures"
 	"server/utils"
 	"strings"
 )
 
-const Carnet string = "05" //202307705
+const Carnet string = "05"                                                            //2023007705
+const PathDisk string = "/home/vela/Documentos/usac/MIA_P1_202307705_1VAC1S2025/test" //FIXME cambiar el path
 
 var (
 	MountedPartitions map[string]string = make(map[string]string) //ID:path
@@ -16,6 +18,10 @@ var (
 	LogedUser         string            = ""
 	LoadedDiskPaths   map[string]string = make(map[string]string) //Nombre:path
 )
+
+func GetPathDisk(name string) string {
+	return fmt.Sprintf(`%s/%s.dsk`, PathDisk, name)
+}
 
 func GetMountedPartition(id string) (*structures.PARTITION, string, error) {
 	path := MountedPartitions[id]
@@ -29,7 +35,7 @@ func GetMountedPartition(id string) (*structures.PARTITION, string, error) {
 		return nil, "", err
 	}
 
-	partition, err := mbr.GetPartitionByID(id)
+	partition, _, err := mbr.GetPartitionByID(id)
 	if partition == nil {
 		return nil, "", err
 	}
@@ -63,7 +69,7 @@ func GetMountedPartitionRep(id string) (*structures.MBR, *structures.SuperBlock,
 	if err != nil {
 		return nil, nil, "", err
 	}
-	partition, err := mbr.GetPartitionByID(id)
+	partition, _, err := mbr.GetPartitionByID(id)
 	if partition == nil {
 		return nil, nil, "", err
 	}
@@ -81,11 +87,6 @@ func GetMountedPartitionRep(id string) (*structures.MBR, *structures.SuperBlock,
 
 func GetNameDisk(idDisk string) string {
 	pathDisk := MountedPartitions[idDisk]
-	diskLetter := utils.GetDiskLetterFromPath(pathDisk)
-	if diskLetter != "" {
-		return diskLetter
-	}
-	// Fallback al método anterior si no se encuentra letra
 	baseName := strings.TrimSuffix(filepath.Base(pathDisk), filepath.Ext(pathDisk))
 	return baseName
 }
@@ -103,7 +104,7 @@ func GetMountedPartitionSuperblock(id string) (*structures.SuperBlock, *structur
 		return nil, nil, "", err
 	}
 
-	partition, err := mbr.GetPartitionByID(id)
+	partition, _, err := mbr.GetPartitionByID(id)
 	if err != nil {
 		return nil, nil, "", err
 	}
