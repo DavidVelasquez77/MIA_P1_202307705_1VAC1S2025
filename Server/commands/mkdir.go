@@ -21,7 +21,7 @@ func ParseMkdir(tokens []string) (string, error) {
 	cmd := &MKDIR{}
 
 	args := strings.Join(tokens, " ")
-	re := regexp.MustCompile(`-path=[^\s]+|-p`)
+	re := regexp.MustCompile(`-path="[^"]+"|-path=[^\s]+|-r`)
 	matches := re.FindAllString(args, -1)
 
 	if len(matches) != len(tokens) {
@@ -46,7 +46,7 @@ func ParseMkdir(tokens []string) (string, error) {
 				value = strings.Trim(value, "\"")
 			}
 			cmd.path = value
-		case "-p":
+		case "-r":
 			cmd.p = true
 		default:
 			return "", fmt.Errorf("parámetro desconocido: %s", key)
@@ -57,7 +57,7 @@ func ParseMkdir(tokens []string) (string, error) {
 		return "", errors.New("faltan parámetros requeridos: -path")
 	}
 
-	err := commandMkdir(cmd)
+	err := CommandMkdir(cmd)
 	if err != nil {
 		return "", err
 	}
@@ -69,7 +69,7 @@ func ParseMkdir(tokens []string) (string, error) {
 // En este caso el ID va a estar quemado
 // var idPartition = "361A"
 
-func commandMkdir(mkdir *MKDIR) error {
+func CommandMkdir(mkdir *MKDIR) error {
 	partitionSuperblock, mountedPartition, partitionPath, err := stores.GetMountedPartitionSuperblock(stores.LogedIdPartition)
 	if err != nil {
 		return fmt.Errorf("error al obtener la partición montada: %w", err)
