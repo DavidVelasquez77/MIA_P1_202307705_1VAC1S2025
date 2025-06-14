@@ -1,0 +1,91 @@
+rmdisk -driveletter=A
+mkdisk -size=3000 -unit=K
+mkdisk -size=3000 -unit=K
+mkdisk -size=3000 -unit=K
+mkdisk -size=3000 -unit=K
+
+fdisk -type=E -driveletter=A -unit=K -name=velaPartition -size=300
+fdisk -type=P -driveletter=A -unit=K -name=par1 -size=300
+fdisk -type=p -driveletter=A -unit=K -name=par2 -size=300
+fdisk -type=P -driveletter=A -unit=K -name=par3 -size=300
+fdisk -driveletter=A -name=par2 -size=300 -delete=full -unit=M
+fdisk -driveletter=A -name=par1 -size=300 -add=200
+mount -driveletter=a -name=par1 
+mount -driveletter=a -name=par3 
+#mounted
+#unmount -id=A205
+#mounted
+#rep -id=A105 -path=/home/vela/Documentos/usac/MIA_P1_202307705_1VAC1S2025/test/output/MBRPE.png -name=mbr
+
+mkfs -type=full -id=A105 -fs=3fs
+
+
+login -user=root -pass=123 -id=A105
+#ERROR SESION INICIADA
+login -user=root -pass=123 -id=A105
+pause
+
+mkgrp -name=usuarios
+mkgrp -name=adm
+mkgrp -name=mail
+mkgrp -name=news
+mkgrp -name=sys
+
+#ERROR YA EXISTE EL GRUPO
+mkgrp -name=sys
+
+cat -file1=/users.txt
+rmgrp -name=mail
+cat -file1=/users.txt
+mkusr -user="usuario1" -pass=password -grp=root
+mkusr -user="user1" -pass=abc -grp=usuarios
+mkusr -user="user2" -pass=abc -grp=usuarios
+
+#ERROR EL USUARIO YA EXISTE
+mkusr -user="user2" -pass=abc -grp=usuarios
+
+#ERROR GRUPO NO EXISTE
+mkusr -user="user3" -pass=abc -grp=system
+
+cat -file1=/users.txt
+rmusr -user=user2
+cat -file1=/users.txt
+mkdir -path=/bin
+
+# ERROR NO EXISTEN LAS CARPETAS PADRES
+mkdir -path="/home/archivos/archivos_24"
+
+mkdir -r -path=/home/archivos/user/docs/usac
+mkdir -r -path=/home/archivos/carpeta1/carpeta2/carpeta3/carpeta4/carpeta5
+logout
+
+#ERROR NO HAY SESION INICIADA
+logout 
+
+login -user=user1 -pass=abc -id=A105
+logout 
+login -user=root -pass=123 -id=A105
+mkfile -path=/home/archivos/user/docs/Tarea.txt -size=75
+mkfile -path=/home/archivos/user/docs/Tarea2.txt -size=1200
+mkfile -path=/home/archivos/user/docs/Tarea3.txt -size=10 -cont=/home/vela/Documentos/usac/MIA_P1_202307705_1VAC1S2025/test/NAME.txt
+
+
+#ERROR NO EXISTE RUTA
+mkfile -path="/home/archivos/noexiste/b1.txt"
+
+#ERROR NEGATIVO
+ -path="/home/archivos/b1.txt" -size=-45
+
+mkfile -r -path=/home/archivos/user/docs/usac/archivos/proyectos/fase1/entrada.txt
+cat -file1=/home/archivos/user/docs/Tarea2.txt -file2=/home/archivos/user/docs/Tarea3.txt
+
+rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r1_inode.png" -name=inode
+rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r2_block.png" -name=block
+rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r3_bm_inode.txt" -name=bm_inode
+rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r4_bm_block.txt" -name=bm_block
+rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r5_sb.png" -name=sb
+rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r6_file.txt -ruta=/home/archivos/user/docs/Tarea3.txt  -name=file
+rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r7_ls.png -ruta=/home/archivos/user/docs -name=ls
+rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r8_tree.png -name=tree
+rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/rep_journal.png -name=JourNALING
+logout

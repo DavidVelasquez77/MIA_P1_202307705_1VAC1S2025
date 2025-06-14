@@ -1,0 +1,16 @@
+digraph G{
+	label = "Disco1";
+	node1[shape=record, label="MBR"];
+	node2[shape=record, label="Primaria\n20.0%"];
+			subgraph cluster_2 {
+			label="Extendida";
+			rankdir=LR
+			node3 [shape=record, label="{EBR | Logica \n 9.8%}"]
+			node4 [shape=record, label="{EBR | Logica \n 5.9%}"]
+			node5 [shape=record, label="{EBR | Logica \n 3.9%}"]
+			node6 [shape=record, label="{EBR | Logica \n 0.0%}"]
+			node7[shape=record, label="Libre\n0.4%"];
+			}node8[shape=record, label="Primaria\n20.0%"];
+			node9[shape=record, label="Primaria\n20.0%"];
+			node10[shape=record, label="Libre\n20.0%"];
+	}

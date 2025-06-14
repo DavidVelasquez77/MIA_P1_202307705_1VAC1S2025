@@ -1,0 +1,33 @@
+digraph G {
+        node [shape=plaintext]
+        tabla [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#aabbcc"> REPORTE MBR </td></tr>
+                <tr><td BGCOLOR="#aabbcc">mbr_tamano</td><td>3072000</td></tr>
+                <tr><td BGCOLOR="#aabbcc">mrb_fecha_creacion</td><td>2025-06-12 19:10:24 -0600 CST</td></tr>
+                <tr><td BGCOLOR="#aabbcc">mbr_disk_signature</td><td>1926584256</td></tr>
+            
+				<tr><td colspan="2" BGCOLOR="#ccbbaa"> PARTICIÓN 1 </td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_status</td><td>0</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_type</td><td>E</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_fit</td><td>W</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_start</td><td>153</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_size</td><td>307200</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_name</td><td>velaPartition</td></tr>
+			
+				<tr><td colspan="2" BGCOLOR="#ccbbaa"> PARTICIÓN 2 </td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_status</td><td>1</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_type</td><td>P</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_fit</td><td>W</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_start</td><td>307353</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_size</td><td>204800</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_name</td><td>par1</td></tr>
+			
+				<tr><td colspan="2" BGCOLOR="#ccbbaa"> PARTICIÓN 4 </td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_status</td><td>1</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_type</td><td>P</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_fit</td><td>W</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_start</td><td>921753</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_size</td><td>307200</td></tr>
+				<tr><td BGCOLOR="#ccbbaa">part_name</td><td>par3</td></tr>
+			</table>>] }
