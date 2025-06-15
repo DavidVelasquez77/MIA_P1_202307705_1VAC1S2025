@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"runtime"
 	"server/analyzer"
+	"server/console"
 	"strings"
 )
 
@@ -13,35 +15,62 @@ var outcome string
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Println("Bienvenido!")
+
+	// Limpiar consola y mostrar bienvenida estética
+	clearConsole()
+	console.PrintWelcome()
+
 	for {
-		fmt.Print(">>> ")
+		console.PrintPrompt()
 
 		if !scanner.Scan() {
 			break
 		}
-		input := scanner.Text()
+		input := strings.TrimSpace(scanner.Text())
+
 		if input == "exit" {
 			break
 		} else if strings.HasPrefix(input, "#") {
+			console.PrintInfo("Comentario ignorado")
+			continue
+		} else if input == "" {
 			continue
 		}
+
+		// Mostrar comando que se va a ejecutar
+		console.PrintCommand(input)
+
 		msg, err := analyzer.Analyzer(input)
 		if err != nil {
-			outcome += fmt.Sprintf("Error: %v\n", err)
-			continue
+			console.PrintError(fmt.Sprintf("%v", err))
+			outcome += fmt.Sprintf("❌ Error: %v\n", err)
 		} else {
-			outcome += fmt.Sprintf("%v\n", msg)
+			console.PrintSuccess("Comando ejecutado correctamente")
+			outcome += fmt.Sprintf("✅ %v\n", msg)
 		}
+		console.PrintSeparator()
 	}
-	clearConsole()
-	fmt.Println("================================== FIN DE EJECUCION ==================================")
-	fmt.Println(outcome)
 
+	// Mostrar resumen final con estilo
+	clearConsole()
+	console.PrintFinalSeparator()
+
+	if outcome != "" {
+		fmt.Println(outcome)
+	} else {
+		console.PrintInfo("No se ejecutaron comandos")
+	}
+
+	console.PrintGoodbye()
 }
 
 func clearConsole() {
-	cmd := exec.Command("clear") // en Windows sería "cls"
+	var cmd *exec.Cmd
+	if runtime.GOOS == "windows" {
+		cmd = exec.Command("cmd", "/c", "cls")
+	} else {
+		cmd = exec.Command("clear")
+	}
 	cmd.Stdout = os.Stdout
 	cmd.Run()
 }

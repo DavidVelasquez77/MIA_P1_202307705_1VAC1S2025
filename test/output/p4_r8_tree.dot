@@ -1,0 +1,442 @@
+digraph G {
+        node [shape=plaintext]
+		rankdir=LR;
+	node1 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 0 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>777</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>0</td></tr><tr><td >2</td><td>5</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node2[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta0\nb_name : b_inodo\n . : 0\n .. : 0\n users.txt : 1\n bin : 2\n"];
+	node1 -> node2
+	node3 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 1 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>146</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>1</td></tr>
+		<tr><td >i_perm</td><td>777</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>1</td></tr><tr><td >2</td><td>2</td></tr><tr><td >3</td><td>3</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node2 -> node3
+		node4[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 1\n1,G,root
+1,U,roo\nt,root,123
+2,G,u\nsuarios
+3,G,adm
+\n0,G,mail
+5,G,new"];
+	node3 -> node4
+	node5[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 2\ns
+6,G,sys
+2,U,ro\not,usuario1,pass\nword
+3,U,usuario\ns,user1,abc
+0,U,"];
+	node3 -> node5
+	node6[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 3\nusua\nrios\n,use\nr2,abc
+"];
+	node3 -> node6
+	node7 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 2 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>4</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node2 -> node7
+		node8[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta4\nb_name : b_inodo\n . : 2\n .. : 0\n - : -1\n - : -1\n"];
+	node7 -> node8
+	node9[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta5\nb_name : b_inodo\n . : 0\n .. : 0\n home : 3\n - : -1\n"];
+	node1 -> node9
+	node10 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 3 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>6</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node9 -> node10
+		node11[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta6\nb_name : b_inodo\n . : 3\n .. : 0\n archivos : 4\n - : -1\n"];
+	node10 -> node11
+	node12 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 4 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>7</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node11 -> node12
+		node13[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta7\nb_name : b_inodo\n . : 4\n .. : 3\n user : 5\n carpeta1 : 8\n"];
+	node12 -> node13
+	node14 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 5 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>8</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node13 -> node14
+		node15[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta8\nb_name : b_inodo\n . : 5\n .. : 4\n docs : 6\n - : -1\n"];
+	node14 -> node15
+	node16 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 6 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>9</td></tr><tr><td >2</td><td>18</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node15 -> node16
+		node17[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta9\nb_name : b_inodo\n . : 6\n .. : 5\n usac : 7\n Tarea.txt : 13\n"];
+	node16 -> node17
+	node18 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 7 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>10</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node17 -> node18
+		node19[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta10\nb_name : b_inodo\n . : 7\n .. : 6\n archivos : 16\n - : -1\n"];
+	node18 -> node19
+	node20 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 16 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>40</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node19 -> node20
+		node21[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta40\nb_name : b_inodo\n . : 16\n .. : 7\n proyectos : 17\n - : -1\n"];
+	node20 -> node21
+	node22 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 17 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>41</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node21 -> node22
+		node23[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta41\nb_name : b_inodo\n . : 17\n .. : 16\n fase1 : 18\n - : -1\n"];
+	node22 -> node23
+	node24 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 18 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>42</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node23 -> node24
+		node25[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta42\nb_name : b_inodo\n . : 18\n .. : 17\n entrada.txt : 19\n - : -1\n"];
+	node24 -> node25
+	node26 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 19 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>1</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>-1</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node25 -> node26
+		node27 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 13 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>75</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>1</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>16</td></tr><tr><td >2</td><td>17</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node17 -> node27
+		node28[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 16\n0123456789012345\n6789012345678901\n2345678901234567\n8901234567890123"];
+	node27 -> node28
+	node29[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 17\n45678901234\n\n\n"];
+	node27 -> node29
+	node30[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta18\nb_name : b_inodo\n . : 6\n .. : 5\n Tarea2.txt : 14\n Tarea3.txt : 15\n"];
+	node16 -> node30
+	node31 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 14 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>1200</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>1</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>19</td></tr><tr><td >2</td><td>20</td></tr><tr><td >3</td><td>21</td></tr><tr><td >4</td><td>22</td></tr><tr><td >5</td><td>23</td></tr><tr><td >6</td><td>24</td></tr><tr><td >7</td><td>25</td></tr><tr><td >8</td><td>26</td></tr><tr><td >9</td><td>27</td></tr><tr><td >10</td><td>28</td></tr><tr><td >11</td><td>29</td></tr><tr><td >12</td><td>30</td></tr><tr><td >13</td><td>31</td></tr><tr><td >14</td><td>32</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>33</td></tr>
+		</table>>];
+	node30 -> node31
+		node32[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 19\n0123456789012345\n6789012345678901\n2345678901234567\n8901234567890123"];
+	node31 -> node32
+	node33[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 20\n4567890123456789\n0123456789012345\n6789012345678901\n2345678901234567"];
+	node31 -> node33
+	node34[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 21\n8901234567890123\n4567890123456789\n0123456789012345\n6789012345678901"];
+	node31 -> node34
+	node35[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 22\n2345678901234567\n8901234567890123\n4567890123456789\n0123456789012345"];
+	node31 -> node35
+	node36[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 23\n6789012345678901\n2345678901234567\n8901234567890123\n4567890123456789"];
+	node31 -> node36
+	node37[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 24\n0123456789012345\n6789012345678901\n2345678901234567\n8901234567890123"];
+	node31 -> node37
+	node38[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 25\n4567890123456789\n0123456789012345\n6789012345678901\n2345678901234567"];
+	node31 -> node38
+	node39[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 26\n8901234567890123\n4567890123456789\n0123456789012345\n6789012345678901"];
+	node31 -> node39
+	node40[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 27\n2345678901234567\n8901234567890123\n4567890123456789\n0123456789012345"];
+	node31 -> node40
+	node41[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 28\n6789012345678901\n2345678901234567\n8901234567890123\n4567890123456789"];
+	node31 -> node41
+	node42[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 29\n0123456789012345\n6789012345678901\n2345678901234567\n8901234567890123"];
+	node31 -> node42
+	node43[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 30\n4567890123456789\n0123456789012345\n6789012345678901\n2345678901234567"];
+	node31 -> node43
+	node44[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 31\n8901234567890123\n4567890123456789\n0123456789012345\n6789012345678901"];
+	node31 -> node44
+	node45[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 32\n2345678901234567\n8901234567890123\n4567890123456789\n0123456789012345"];
+	node31 -> node45
+	node46[fillcolor="#f7dc6f" style=filled shape=record label="Bloque Apuntador33\n
+ 34, 35, 36, 37, 38, -1,
+ -1, -1, -1, -1, -1, -1,
+ -1, -1, -1, -1,"];
+	node31 -> node46
+	node47[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 34\n6789012345678901\n2345678901234567\n8901234567890123\n4567890123456789"];
+	node46 -> node47
+	node48[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 35\n0123456789012345\n6789012345678901\n2345678901234567\n8901234567890123"];
+	node46 -> node48
+	node49[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 36\n4567890123456789\n0123456789012345\n6789012345678901\n2345678901234567"];
+	node46 -> node49
+	node50[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 37\n8901234567890123\n4567890123456789\n0123456789012345\n6789012345678901"];
+	node46 -> node50
+	node51[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 38\n234567890123\n456789012345\n678901234567\n890123456789"];
+	node46 -> node51
+	node52 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 15 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>28</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>1</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>39</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node30 -> node52
+		node53[fillcolor="#7dcea0" style=filled shape=record label="Bloque archivo 39\nJosue D\navid Ve\nlasquez\n Ixchop"];
+	node52 -> node53
+	node54 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 8 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>11</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node13 -> node54
+		node55[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta11\nb_name : b_inodo\n . : 8\n .. : 4\n carpeta2 : 9\n - : -1\n"];
+	node54 -> node55
+	node56 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 9 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>12</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node55 -> node56
+		node57[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta12\nb_name : b_inodo\n . : 9\n .. : 8\n carpeta3 : 10\n - : -1\n"];
+	node56 -> node57
+	node58 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 10 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>13</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node57 -> node58
+		node59[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta13\nb_name : b_inodo\n . : 10\n .. : 9\n carpeta4 : 11\n - : -1\n"];
+	node58 -> node59
+	node60 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 11 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>14</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node59 -> node60
+		node61[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta14\nb_name : b_inodo\n . : 11\n .. : 10\n carpeta5 : 12\n - : -1\n"];
+	node60 -> node61
+	node62 [fillcolor="#85c1e9 " style=filled label=<
+	<table border="0" cellborder="1" cellspacing="0">
+		<tr><td colspan="2"> REPORTE INODO 12 </td></tr>
+		<tr><td >i_uid</td><td>1</td></tr>
+		<tr><td >i_gid</td><td>1</td></tr>
+		<tr><td >i_size</td><td>0</td></tr>
+		<tr><td >i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+		<tr><td >i_type</td><td>0</td></tr>
+		<tr><td >i_perm</td><td>664</td></tr>
+		<tr><td  colspan="2">BLOQUES DIRECTOS</td></tr>
+	<tr><td >1</td><td>15</td></tr><tr><td >2</td><td>-1</td></tr><tr><td >3</td><td>-1</td></tr><tr><td >4</td><td>-1</td></tr><tr><td >5</td><td>-1</td></tr><tr><td >6</td><td>-1</td></tr><tr><td >7</td><td>-1</td></tr><tr><td >8</td><td>-1</td></tr><tr><td >9</td><td>-1</td></tr><tr><td >10</td><td>-1</td></tr><tr><td >11</td><td>-1</td></tr><tr><td >12</td><td>-1</td></tr><tr><td >13</td><td>-1</td></tr><tr><td >14</td><td>-1</td></tr>
+			<tr><td  colspan="2">BLOQUE INDIRECTO</td></tr>
+			<tr><td >15</td><td>-1</td></tr>
+		</table>>];
+	node61 -> node62
+		node63[fillcolor="#ec7063" style=filled shape=record label="Bloque Carpeta15\nb_name : b_inodo\n . : 12\n .. : 11\n - : -1\n - : -1\n"];
+	node62 -> node63
+	}

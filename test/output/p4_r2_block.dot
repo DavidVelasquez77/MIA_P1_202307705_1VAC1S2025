@@ -1,0 +1,103 @@
+strict digraph G {
+        node [shape=plaintext]
+		rankdir=LR;
+		node1[shape=record label="Bloque Carpeta0\nb_name : b_inodo\n . : 0\n .. : 0\n users.txt : 1\n bin : 2\n"];
+				node1 -> node2;
+node2[shape=record label="Bloque Carpeta5\nb_name : b_inodo\n . : 0\n .. : 0\n home : 3\n - : -1\n"];
+				node2 -> node3;
+node3[shape=record label="Bloque archivo 1\n1,G,root
+1,U,roo\nt,root,123
+2,G,u\nsuarios
+3,G,adm
+\n0,G,mail
+5,G,new"];
+					node3 -> node4;
+node4[shape=record label="Bloque archivo 2\ns
+6,G,sys
+2,U,ro\not,usuario1,pass\nword
+3,U,usuario\ns,user1,abc
+0,U,"];
+					node4 -> node5;
+node5[shape=record label="Bloque archivo 3\nusua\nrios\n,use\nr2,abc
+"];
+					node5 -> node6;
+node6[shape=record label="Bloque Carpeta4\nb_name : b_inodo\n . : 2\n .. : 0\n - : -1\n - : -1\n"];
+				node6 -> node7;
+node7[shape=record label="Bloque Carpeta6\nb_name : b_inodo\n . : 3\n .. : 0\n archivos : 4\n - : -1\n"];
+				node7 -> node8;
+node8[shape=record label="Bloque Carpeta7\nb_name : b_inodo\n . : 4\n .. : 3\n user : 5\n carpeta1 : 8\n"];
+				node8 -> node9;
+node9[shape=record label="Bloque Carpeta8\nb_name : b_inodo\n . : 5\n .. : 4\n docs : 6\n - : -1\n"];
+				node9 -> node10;
+node10[shape=record label="Bloque Carpeta9\nb_name : b_inodo\n . : 6\n .. : 5\n usac : 7\n Tarea.txt : 13\n"];
+				node10 -> node11;
+node11[shape=record label="Bloque Carpeta18\nb_name : b_inodo\n . : 6\n .. : 5\n Tarea2.txt : 14\n Tarea3.txt : 15\n"];
+				node11 -> node12;
+node12[shape=record label="Bloque Carpeta10\nb_name : b_inodo\n . : 7\n .. : 6\n archivos : 16\n - : -1\n"];
+				node12 -> node13;
+node13[shape=record label="Bloque Carpeta11\nb_name : b_inodo\n . : 8\n .. : 4\n carpeta2 : 9\n - : -1\n"];
+				node13 -> node14;
+node14[shape=record label="Bloque Carpeta12\nb_name : b_inodo\n . : 9\n .. : 8\n carpeta3 : 10\n - : -1\n"];
+				node14 -> node15;
+node15[shape=record label="Bloque Carpeta13\nb_name : b_inodo\n . : 10\n .. : 9\n carpeta4 : 11\n - : -1\n"];
+				node15 -> node16;
+node16[shape=record label="Bloque Carpeta14\nb_name : b_inodo\n . : 11\n .. : 10\n carpeta5 : 12\n - : -1\n"];
+				node16 -> node17;
+node17[shape=record label="Bloque Carpeta15\nb_name : b_inodo\n . : 12\n .. : 11\n - : -1\n - : -1\n"];
+				node17 -> node18;
+node18[shape=record label="Bloque archivo 16\n0123456789012345\n6789012345678901\n2345678901234567\n8901234567890123"];
+					node18 -> node19;
+node19[shape=record label="Bloque archivo 17\n45678901234\n\n\n"];
+					node19 -> node20;
+node20[shape=record label="Bloque archivo 19\n0123456789012345\n6789012345678901\n2345678901234567\n8901234567890123"];
+					node20 -> node21;
+node21[shape=record label="Bloque archivo 20\n4567890123456789\n0123456789012345\n6789012345678901\n2345678901234567"];
+					node21 -> node22;
+node22[shape=record label="Bloque archivo 21\n8901234567890123\n4567890123456789\n0123456789012345\n6789012345678901"];
+					node22 -> node23;
+node23[shape=record label="Bloque archivo 22\n2345678901234567\n8901234567890123\n4567890123456789\n0123456789012345"];
+					node23 -> node24;
+node24[shape=record label="Bloque archivo 23\n6789012345678901\n2345678901234567\n8901234567890123\n4567890123456789"];
+					node24 -> node25;
+node25[shape=record label="Bloque archivo 24\n0123456789012345\n6789012345678901\n2345678901234567\n8901234567890123"];
+					node25 -> node26;
+node26[shape=record label="Bloque archivo 25\n4567890123456789\n0123456789012345\n6789012345678901\n2345678901234567"];
+					node26 -> node27;
+node27[shape=record label="Bloque archivo 26\n8901234567890123\n4567890123456789\n0123456789012345\n6789012345678901"];
+					node27 -> node28;
+node28[shape=record label="Bloque archivo 27\n2345678901234567\n8901234567890123\n4567890123456789\n0123456789012345"];
+					node28 -> node29;
+node29[shape=record label="Bloque archivo 28\n6789012345678901\n2345678901234567\n8901234567890123\n4567890123456789"];
+					node29 -> node30;
+node30[shape=record label="Bloque archivo 29\n0123456789012345\n6789012345678901\n2345678901234567\n8901234567890123"];
+					node30 -> node31;
+node31[shape=record label="Bloque archivo 30\n4567890123456789\n0123456789012345\n6789012345678901\n2345678901234567"];
+					node31 -> node32;
+node32[shape=record label="Bloque archivo 31\n8901234567890123\n4567890123456789\n0123456789012345\n6789012345678901"];
+					node32 -> node33;
+node33[shape=record label="Bloque archivo 32\n2345678901234567\n8901234567890123\n4567890123456789\n0123456789012345"];
+					node33 -> node34;
+node34[shape=record label="Bloque Apuntador33\n
+ 34, 35, 36, 37, 38, -1,
+ -1, -1, -1, -1, -1, -1,
+ -1, -1, -1, -1,"];
+			node34 -> node35;
+node35[shape=record label="Bloque archivo 34\n6789012345678901\n2345678901234567\n8901234567890123\n4567890123456789"];
+					node35 -> node36;
+node36[shape=record label="Bloque archivo 35\n0123456789012345\n6789012345678901\n2345678901234567\n8901234567890123"];
+					node36 -> node37;
+node37[shape=record label="Bloque archivo 36\n4567890123456789\n0123456789012345\n6789012345678901\n2345678901234567"];
+					node37 -> node38;
+node38[shape=record label="Bloque archivo 37\n8901234567890123\n4567890123456789\n0123456789012345\n6789012345678901"];
+					node38 -> node39;
+node39[shape=record label="Bloque archivo 38\n234567890123\n456789012345\n678901234567\n890123456789"];
+					node39 -> node40;
+node40[shape=record label="Bloque archivo 39\nJosue D\navid Ve\nlasquez\n Ixchop"];
+					node40 -> node41;
+node41[shape=record label="Bloque Carpeta40\nb_name : b_inodo\n . : 16\n .. : 7\n proyectos : 17\n - : -1\n"];
+				node41 -> node42;
+node42[shape=record label="Bloque Carpeta41\nb_name : b_inodo\n . : 17\n .. : 16\n fase1 : 18\n - : -1\n"];
+				node42 -> node43;
+node43[shape=record label="Bloque Carpeta42\nb_name : b_inodo\n . : 18\n .. : 17\n entrada.txt : 19\n - : -1\n"];
+				node43 -> node44;
+}

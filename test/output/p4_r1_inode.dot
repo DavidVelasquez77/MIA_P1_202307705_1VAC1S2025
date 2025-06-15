@@ -1,0 +1,343 @@
+digraph G {
+        node [shape=plaintext]
+		rankdir=LR;
+    inode0 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 0 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>777</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>0</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>5</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode0 -> inode1;
+inode1 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 1 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>146</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>777</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>1</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>2</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>3</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode1 -> inode2;
+inode2 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 2 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>4</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode2 -> inode3;
+inode3 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 3 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>6</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode3 -> inode4;
+inode4 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 4 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>7</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode4 -> inode5;
+inode5 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 5 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>8</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode5 -> inode6;
+inode6 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 6 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>9</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>18</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode6 -> inode7;
+inode7 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 7 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>10</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode7 -> inode8;
+inode8 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 8 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>11</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode8 -> inode9;
+inode9 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 9 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>12</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode9 -> inode10;
+inode10 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 10 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>13</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode10 -> inode11;
+inode11 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 11 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>14</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode11 -> inode12;
+inode12 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 12 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>15</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode12 -> inode13;
+inode13 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 13 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>75</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>16</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>17</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode13 -> inode14;
+inode14 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 14 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>1200</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>19</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>20</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>21</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>22</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>23</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>24</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>25</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>26</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>27</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>28</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>29</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>30</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>31</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>32</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>33</td></tr>
+            </table>>];
+        inode14 -> inode15;
+inode15 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 15 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>28</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>39</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode15 -> inode16;
+inode16 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 16 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>40</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode16 -> inode17;
+inode17 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 17 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>41</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode17 -> inode18;
+inode18 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 18 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>42</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        inode18 -> inode19;
+inode19 [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#bbccaa"> REPORTE INODO 19 </td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_uid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_gid</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_size</td><td>0</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_atime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_ctime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_type</td><td>1</td></tr>
+                <tr><td BGCOLOR="#bbccaa">i_perm</td><td>664</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUES DIRECTOS</td></tr>
+            <tr><td BGCOLOR="#bbccaa">1</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">2</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">3</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">4</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">5</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">6</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">7</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">8</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">9</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">10</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">11</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">12</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">13</td><td>-1</td></tr><tr><td BGCOLOR="#bbccaa">14</td><td>-1</td></tr>
+                <tr><td BGCOLOR="#bbccaa" colspan="2">BLOQUE INDIRECTO</td></tr>
+                <tr><td BGCOLOR="#bbccaa">15</td><td>-1</td></tr>
+            </table>>];
+        }

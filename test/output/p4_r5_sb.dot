@@ -1,0 +1,25 @@
+digraph G {
+        node [shape=plaintext]
+		rankdir=LR;
+    inode [label=<
+            <table border="0" cellborder="1" cellspacing="0">
+                <tr><td colspan="2" BGCOLOR="#aaccbb"> REPORTE SUPERBLOCK</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_filesystem_type</td><td>3</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_inodes_count</td><td>20</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_blocks_count</td><td>43</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_free_inodes_count</td><td>1143</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_free_blocks_count</td><td>3446</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_mtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_umtime</td><td>2025-06-14T20:35:44-06:00</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_mnt_count</td><td>1</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_magic</td><td>0xEF53</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_inode_size</td><td>88</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_block_size</td><td>64</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_first_ino</td><td>495261</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_first_blo</td><td>598597</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_bm_inode_start</td><td>488849</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_bm_block_start</td><td>490012</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_inode_start</td><td>493501</td></tr>
+                <tr><td BGCOLOR="#aaccbb">S_block_start</td><td>595845</td></tr>
+				 </table>>];
+            }

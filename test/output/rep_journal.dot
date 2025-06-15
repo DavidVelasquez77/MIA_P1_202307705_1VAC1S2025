@@ -1,0 +1,317 @@
+digraph G {
+    node [shape=plaintext]
+
+    tabla1 [label=<
+        <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0">
+		<TR>
+                <TD><B>Command</B></TD>
+                <TD><B>Path</B></TD>
+                <TD><B>Content</B></TD>
+                <TD><B>Date</B></TD>
+		</TR>
+    
+		<TR>
+			<TD>mkdir</TD>
+			<TD>/</TD>
+			<TD></TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/users.txt</TD>
+			<TD>1,G,root
+1,U,root,root,123
+</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>login</TD>
+			<TD></TD>
+			<TD>A105/root/123</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkgrp</TD>
+			<TD></TD>
+			<TD>usuarios</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkgrp</TD>
+			<TD></TD>
+			<TD>adm</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkgrp</TD>
+			<TD></TD>
+			<TD>mail</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkgrp</TD>
+			<TD></TD>
+			<TD>news</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkgrp</TD>
+			<TD></TD>
+			<TD>sys</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>rmgrp</TD>
+			<TD></TD>
+			<TD>mail</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkusr</TD>
+			<TD></TD>
+			<TD>usuario1/password/root</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkusr</TD>
+			<TD></TD>
+			<TD>user1/abc/usuarios</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkusr</TD>
+			<TD></TD>
+			<TD>user2/abc/usuarios</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>rmusr</TD>
+			<TD></TD>
+			<TD>user2</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkdir</TD>
+			<TD>/bin</TD>
+			<TD></TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkdir</TD>
+			<TD>/home/archivos/user/docs/usac</TD>
+			<TD></TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkdir</TD>
+			<TD>/home/archivos/carpeta1/carpeta2/carpeta3/carpeta4/carpeta5</TD>
+			<TD></TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>logout</TD>
+			<TD></TD>
+			<TD></TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>login</TD>
+			<TD></TD>
+			<TD>A105/user1/abc</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>logout</TD>
+			<TD></TD>
+			<TD></TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>login</TD>
+			<TD></TD>
+			<TD>A105/root/123</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea.txt</TD>
+			<TD>0123456789012345678901234567890123456789012345678901234567890123</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea.txt</TD>
+			<TD>45678901234</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>0123456789012345678901234567890123456789012345678901234567890123</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>4567890123456789012345678901234567890123456789012345678901234567</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>8901234567890123456789012345678901234567890123456789012345678901</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>2345678901234567890123456789012345678901234567890123456789012345</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>6789012345678901234567890123456789012345678901234567890123456789</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>0123456789012345678901234567890123456789012345678901234567890123</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>4567890123456789012345678901234567890123456789012345678901234567</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>8901234567890123456789012345678901234567890123456789012345678901</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>2345678901234567890123456789012345678901234567890123456789012345</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>6789012345678901234567890123456789012345678901234567890123456789</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>0123456789012345678901234567890123456789012345678901234567890123</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>4567890123456789012345678901234567890123456789012345678901234567</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>8901234567890123456789012345678901234567890123456789012345678901</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>2345678901234567890123456789012345678901234567890123456789012345</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>6789012345678901234567890123456789012345678901234567890123456789</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>0123456789012345678901234567890123456789012345678901234567890123</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>4567890123456789012345678901234567890123456789012345678901234567</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>8901234567890123456789012345678901234567890123456789012345678901</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea2.txt</TD>
+			<TD>234567890123456789012345678901234567890123456789</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/Tarea3.txt</TD>
+			<TD>Josue David Velasquez Ixchop</TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		
+		<TR>
+			<TD>mkfile</TD>
+			<TD>/home/archivos/user/docs/usac/archivos/proyectos/fase1/entrada.txt</TD>
+			<TD></TD>
+			<TD>2025-06-14</TD>
+		</TR>
+		</TABLE>
+    >];
+}

@@ -12,10 +12,10 @@ fdisk -driveletter=A -name=par2 -size=300 -delete=full -unit=M
 fdisk -driveletter=A -name=par1 -size=300 -add=200
 mount -driveletter=a -name=par1 
 mount -driveletter=a -name=par3 
-#mounted
-#unmount -id=A205
-#mounted 
-#rep -id=A105 -path=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/output/MBRPE.png -name=mbr
+mounted
+unmount -id=A205
+mounted 
+rep -id=A105 -path=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/output/MBRPE.png -name=mbr
 
 mkfs -type=full -id=A105 -fs=3fs
 
@@ -79,13 +79,13 @@ mkfile -path="/home/archivos/noexiste/b1.txt"
 mkfile -r -path=/home/archivos/user/docs/usac/archivos/proyectos/fase1/entrada.txt
 cat -file1=/home/archivos/user/docs/Tarea2.txt -file2=/home/archivos/user/docs/Tarea3.txt
 
-rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r1_inode.png" -name=inode
-rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r2_block.png" -name=block
-rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r3_bm_inode.txt" -name=bm_inode
-rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r4_bm_block.txt" -name=bm_block
-rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r5_sb.png" -name=sb
-rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r6_file.txt -ruta=/home/archivos/user/docs/Tarea3.txt  -name=file
-rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r7_ls.png -ruta=/home/archivos/user/docs -name=ls
-rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/p4_r8_tree.png -name=tree
-rep -id=A105 -path=/home/vela/Calificacion_MIA/Reportes/rep_journal.png -name=JourNALING
+rep -id=A105 -path=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/output/p4_r1_inode.png -name=inode
+rep -id=A105 -path=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/output/p4_r2_block.png -name=block
+rep -id=A105 -path=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/output/p4_r3_bm_inode.txt -name=bm_inode
+rep -id=A105 -path=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/output/p4_r4_bm_block.txt -name=bm_block
+rep -id=A105 -path=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/output/p4_r5_sb.png -name=sb
+rep -id=A105 -path=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/output/p4_r6_file.txt -ruta=/home/archivos/user/docs/Tarea3.txt  -name=file
+rep -id=A105 -path=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/output/p4_r7_ls.png -ruta=/home/archivos/user/docs -name=ls
+rep -id=A105 -path=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/output/p4_r8_tree.png -name=tree
+rep -id=A105 -path=/home/vela/Documentos/MIA/MIA_P1_202307705_1VAC1S2025/test/output/rep_journal.png -name=JourNALING
 logout

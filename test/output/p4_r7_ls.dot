@@ -1,0 +1,9 @@
+digraph G {
+    node [shape=plaintext];
+    tabla1 [label=<
+        <table border="1" cellborder="1" cellspacing="0">
+            <tr><td>Permisos</td><td>Owner</td><td>Grupo</td><td>Size</td><td>Fecha y Hora</td><td>Tipo</td><td>Name</td></tr>
+    <tr><td>rw- rw- r-- </td><td>root</td><td>root</td><td>0</td><td>2025-06-14T20:35:44-06:00</td><td>Carpeta</td><td>usac</td></tr><tr><td>rw- rw- r-- </td><td>root</td><td>root</td><td>75</td><td>2025-06-14T20:35:44-06:00</td><td>Archivo</td><td>Tarea.txt</td></tr><tr><td>rw- rw- r-- </td><td>root</td><td>root</td><td>1200</td><td>2025-06-14T20:35:44-06:00</td><td>Archivo</td><td>Tarea2.txt</td></tr><tr><td>rw- rw- r-- </td><td>root</td><td>root</td><td>28</td><td>2025-06-14T20:35:44-06:00</td><td>Archivo</td><td>Tarea3.txt</td></tr>
+	        </table>
+    >];
+}
