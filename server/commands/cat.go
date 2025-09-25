@@ -1,5 +1,5 @@
 package commands
-
+//feature: cat
 import (
 	"errors"
 	"fmt"
